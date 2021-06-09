@@ -6,8 +6,14 @@
 package sisteminformasipuskesmas;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,9 +24,14 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     /**
      * Creates new form PetugasFormAdmin
      */
+    
+    private DefaultTableModel model;
+    
     public PetugasFormAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        tabel_data();
+        txtIDPetugas.requestFocus();
     }
 
     /**
@@ -63,28 +74,28 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblData = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        txtIDPetugas = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         txtNamaPetugas = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        txtNamaPetugas1 = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxJenisKelamin = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAlamat = new javax.swing.JTextArea();
         jLabel24 = new javax.swing.JLabel();
-        txtNamaPetugas2 = new javax.swing.JTextField();
+        txtNoHP = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnSimpan = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
+        txtCariData = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -492,7 +503,8 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -503,14 +515,25 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblData.setRowHeight(20);
+        tblData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblData);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Data Petugas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel19.setText("ID");
 
-        txtID.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtIDPetugas.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtIDPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDPetugasKeyTyped(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel20.setText("Nama Petugas");
@@ -520,27 +543,31 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel21.setText("Password");
 
-        txtNamaPetugas1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel23.setText("Jenis Kelamin");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan" }));
-        jComboBox1.setSelectedIndex(-1);
+        cbxJenisKelamin.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        cbxJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan" }));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel22.setText("Alamat");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtAlamat.setColumns(20);
+        txtAlamat.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtAlamat.setRows(5);
+        jScrollPane2.setViewportView(txtAlamat);
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel24.setText("No HP");
 
-        txtNamaPetugas2.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtNoHP.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtNoHP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNoHPKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -557,10 +584,10 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNamaPetugas2)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNamaPetugas1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtID)
+                            .addComponent(txtNoHP)
+                            .addComponent(cbxJenisKelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtIDPetugas)
                             .addComponent(txtNamaPetugas)
                             .addComponent(jScrollPane2)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -577,7 +604,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtIDPetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -585,11 +612,11 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNamaPetugas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cbxJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -597,23 +624,43 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNamaPetugas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNoHP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Navigasi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jButton1.setText("Simpan");
+        btnSimpan.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jButton2.setText("Ubah");
+        btnUbah.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnUbah.setText("Ubah");
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jButton4.setText("Hapus");
+        btnHapus.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jButton5.setText("Batal");
+        btnBatal.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -621,13 +668,13 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -635,55 +682,57 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btnSimpan)
+                    .addComponent(btnUbah)
+                    .addComponent(btnHapus)
+                    .addComponent(btnBatal))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtCariData.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtCariData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCariDataKeyTyped(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        jButton3.setText("Cari Data");
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel25.setText("Cari Data");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(306, 306, 306)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(349, 349, 349)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
@@ -892,6 +941,293 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblCloseMouseClicked
 
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+        String idpetugas = txtIDPetugas.getText();
+        String namapetugas = txtIDPetugas.getText();
+        String password = txtIDPetugas.getText();
+        String jeniskelamin = (String)cbxJenisKelamin.getSelectedItem();
+        String alamat = txtAlamat.getText();
+        String nohp = txtNoHP.getText();
+        
+        if(checkID(idpetugas)){
+            JOptionPane.showMessageDialog(null, "ID sudah ada", "Error", 2);
+        }
+        else if(idpetugas.trim().equals("") || namapetugas.trim().equals("") || password.trim().equals("")
+                || jeniskelamin.trim().equals("") || alamat.trim().equals("") || nohp.trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Error", 2);
+        } else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin simpan data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION)
+            {
+                try {
+                    String sql = "insert into petugas_rm values('"
+                            +txtIDPetugas.getText()+"','"
+                            +txtNamaPetugas.getText()+"','"
+                            +txtPassword.getText()+"','"
+                            +cbxJenisKelamin.getSelectedItem()+"','"
+                            +txtAlamat.getText()+"','"
+                            +txtNoHP.getText()+"')";
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.execute();
+                    JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+                    tabel_data();
+                    clear_form();
+                    txtIDPetugas.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal disimpan", "Error", 2);
+                    clear_form();
+                    txtIDPetugas.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void txtIDPetugasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDPetugasKeyTyped
+        // TODO add your handling code here:
+        char idadmin = evt.getKeyChar();
+        if(!(Character.isDigit(idadmin) || (idadmin==KeyEvent.VK_BACK_SPACE)) || (idadmin==KeyEvent.VK_DELETE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "ID harus berupa angka");
+        }
+    }//GEN-LAST:event_txtIDPetugasKeyTyped
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        // TODO add your handling code here:
+        String idpetugas = txtIDPetugas.getText();
+        String namapetugas = txtNamaPetugas.getText();
+        String password = txtPassword.getText();
+        String jeniskelamin = (String)cbxJenisKelamin.getSelectedItem();
+        String alamat = txtAlamat.getText();
+        String nohp = txtNoHP.getText();
+        
+        if(idpetugas.trim().equals("") || namapetugas.trim().equals("") || password.trim().equals("")
+                || jeniskelamin.trim().equals("") || alamat.trim().equals("") || nohp.trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Pilih data yang ingin diubah", "Error", 2);
+        }
+        else if(!checkID(idpetugas)){
+            JOptionPane.showMessageDialog(null, "Data yang akan diubah tidak ditemukan", "Error", 2);
+        } else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin update data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION)
+            {
+                try {
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    String sql = "update petugas_rm set id_petugas='" + txtIDPetugas.getText()+
+                                "', nama_petugas='" + txtNamaPetugas.getText()+
+                                "', password='" + txtPassword.getText()+
+                                "', jenis_kelamin='" + cbxJenisKelamin.getSelectedItem()+
+                                "', alamat='" + txtAlamat.getText()+
+                                "', no_hp='" + txtNoHP.getText()+
+                                "' where id_petugas='" + txtIDPetugas.getText()+"'";
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Data berhasil diubah");
+                    tabel_data();
+                    clear_form();
+                    txtIDPetugas.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal diubah", "Error", 2);
+                    clear_form();
+                    txtIDPetugas.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        String idpetugas = txtIDPetugas.getText();
+        
+        if(idpetugas.trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Masukkan ID data yang akan dihapus", "Error", 2);
+        }
+        else if(!checkID(idpetugas)){
+            JOptionPane.showMessageDialog(null, "Data yang akan dihapus tidak ditemukan", "Error", 2);
+        } else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin hapus data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION){
+                try {
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    String sql = "delete from petugas_rm where id_petugas='"+ txtIDPetugas.getText()+"' ";
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.executeUpdate();
+
+                    JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
+                    tabel_data();
+                    clear_form();
+                    txtIDPetugas.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal dihapus", "Error", 2);
+                    clear_form();
+                    txtIDPetugas.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        clear_form();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void txtNoHPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoHPKeyTyped
+        // TODO add your handling code here:
+        char nohp = evt.getKeyChar();
+        if(!(Character.isDigit(nohp) || (nohp==KeyEvent.VK_BACK_SPACE)) || (nohp==KeyEvent.VK_DELETE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "No HP harus berupa angka");
+        }
+    }//GEN-LAST:event_txtNoHPKeyTyped
+
+    private void txtCariDataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariDataKeyTyped
+        // TODO add your handling code here:
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("ID");
+        tabel.addColumn("Nama Petugas");
+        tabel.addColumn("Password");
+        tabel.addColumn("Jenis Kelamin");
+        tabel.addColumn("Alamat");
+        tabel.addColumn("No HP");
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from petugas_rm where id_petugas like'%" + txtCariData.getText()+ "%' or nama_petugas like'%" + txtCariData.getText()+ "%'";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while(rs.next()){
+                tabel.addRow(new Object[]{
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(6)});
+            }
+            tblData.setModel(tabel);
+            load_data();
+        } catch (Exception e) {
+           
+        }
+    }//GEN-LAST:event_txtCariDataKeyTyped
+
+    private void tblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDataMouseClicked
+        // TODO add your handling code here:
+        int tabel = tblData.getSelectedRow();
+        txtIDPetugas.setText(tblData.getValueAt(tabel, 0).toString());
+        txtNamaPetugas.setText(tblData.getValueAt(tabel, 1).toString());
+        txtPassword.setText(tblData.getValueAt(tabel, 2).toString());
+        cbxJenisKelamin.setSelectedItem(tblData.getValueAt(tabel, 3).toString());
+        txtAlamat.setText(tblData.getValueAt(tabel, 4).toString());
+        txtNoHP.setText(tblData.getValueAt(tabel, 5).toString());
+    }//GEN-LAST:event_tblDataMouseClicked
+    
+    public boolean checkID(String idpetugas){
+        boolean id_exist = false;
+       
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from `petugas_rm` where `id_petugas` = ?";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, idpetugas);
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                id_exist = true;
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PetugasFormAdmin.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return id_exist;
+    }
+    
+    public boolean checknama(String namapetugas){
+        boolean nama_exist = false;
+       
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from `petugas_rm` where `nama_petugas` = ?";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, namapetugas);
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                nama_exist = true;
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PetugasFormAdmin.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return nama_exist;
+    }
+    
+    public void clear_form(){
+        txtIDPetugas.setText("");
+        txtNamaPetugas.setText("");
+        txtPassword.setText("");
+        cbxJenisKelamin.setSelectedItem("");
+        txtAlamat.setText("");
+        txtNoHP.setText("");
+        txtIDPetugas.requestFocus();
+    }
+    
+    public void load_data(){
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            Statement st = con.createStatement();
+            
+            String sql = "select * from petugas_rm";
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                Object[] o = new Object[6];
+                o [0] = rs.getString("id_petugas");
+                o [1] = rs.getString("nama_petugas");
+                o [2] = rs.getString("passsword");
+                o [3] = rs.getString("jenis_kelamin");
+                o [4] = rs.getString("alamat");
+                o [5] = rs.getString("no_hp");
+                
+                model.addRow(o);
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan", "Error", 2);
+        }
+    }
+    
+    public void tabel_data(){
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("ID");
+        tabel.addColumn("Nama Petugas");
+        tabel.addColumn("Password");
+        tabel.addColumn("Jenis Kelamin");
+        tabel.addColumn("Alamat");
+        tabel.addColumn("No HP");
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from petugas_rm";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while(rs.next()){
+                tabel.addRow(new Object[]{
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(6)});
+            }
+            tblData.setModel(tabel);
+        } catch (Exception e) {
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -928,12 +1264,11 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnUbah;
+    private javax.swing.JComboBox<String> cbxJenisKelamin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -951,6 +1286,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -965,9 +1301,6 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblMinimize;
     private java.awt.Panel panel1;
@@ -979,9 +1312,12 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPengaturan;
     private javax.swing.JPanel pnlPetugas;
-    private javax.swing.JTextField txtID;
+    private javax.swing.JTable tblData;
+    private javax.swing.JTextArea txtAlamat;
+    private javax.swing.JTextField txtCariData;
+    private javax.swing.JTextField txtIDPetugas;
     private javax.swing.JTextField txtNamaPetugas;
-    private javax.swing.JTextField txtNamaPetugas1;
-    private javax.swing.JTextField txtNamaPetugas2;
+    private javax.swing.JTextField txtNoHP;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

@@ -243,27 +243,27 @@ public class LoginFormAdmin extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        PreparedStatement st;
+        PreparedStatement pst;
         ResultSet rs;
         
         String idadmin = txtIDAdmin.getText();
         String namaadmin = txtNamaAdmin.getText();
         String password = String.valueOf(pwdPassword.getPassword());
         
-        String query = "SELECT * FROM `admin` WHERE `id_admin` = ? AND `nama_admin` = ? AND `password` = ?";
+        String query = "select * from `admin` where `id_admin` = ? and `nama_admin` = ? and `password` = ?";
         
         if(idadmin.trim().equals("") || namaadmin.trim().equals("") || password.trim().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Login Error", 2);
+            JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Error", 2);
         }
         else{
             try {
-                st = connection.getConnection().prepareStatement(query);
+                pst = connection.getConnection().prepareStatement(query);
 
-                st.setString(1, idadmin);
-                st.setString(2, namaadmin);
-                st.setString(3, password);
-                rs = st.executeQuery();
+                pst.setString(1, idadmin);
+                pst.setString(2, namaadmin);
+                pst.setString(3, password);
+                rs = pst.executeQuery();
 
                 if(rs.next())
                 {
@@ -274,7 +274,7 @@ public class LoginFormAdmin extends javax.swing.JFrame {
                     this.dispose();
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "ID Admin / Nama Admin / Password Salah", "Login Error", 2);
+                    JOptionPane.showMessageDialog(null, "ID Admin / Nama Admin / Password Salah", "Error", 2);
                 }
 
             } catch (SQLException ex) {
@@ -288,7 +288,7 @@ public class LoginFormAdmin extends javax.swing.JFrame {
         char idadmin = evt.getKeyChar();
         if(!(Character.isDigit(idadmin) || (idadmin==KeyEvent.VK_BACK_SPACE)) || (idadmin==KeyEvent.VK_DELETE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "ID Admin harus berupa angka");
+            JOptionPane.showMessageDialog(null, "ID harus berupa angka");
         }
     }//GEN-LAST:event_txtIDAdminKeyTyped
 

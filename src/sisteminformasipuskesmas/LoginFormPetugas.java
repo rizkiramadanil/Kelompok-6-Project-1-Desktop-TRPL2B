@@ -243,27 +243,27 @@ public class LoginFormPetugas extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        PreparedStatement st;
+        PreparedStatement pst;
         ResultSet rs;
 
         String idpetugas = txtIDPetugas.getText();
         String namapetugas = txtNamaPetugas.getText();
         String password = String.valueOf(pwdPassword.getPassword());
 
-        String query = "SELECT * FROM `petugas_rm` WHERE `id_petugas` = ? AND `nama_petugas` = ? AND `password` = ?";
+        String query = "select * from `petugas_rm` where `id_petugas` = ? and `nama_petugas` = ? and `password` = ?";
 
         if(idpetugas.trim().equals("") || namapetugas.trim().equals("") || password.trim().equals(""))
         {
-            JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Login Error", 2);
+            JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Error", 2);
         }
         else{
             try {
-                st = connection.getConnection().prepareStatement(query);
+                pst = connection.getConnection().prepareStatement(query);
 
-                st.setString(1, idpetugas);
-                st.setString(2, namapetugas);
-                st.setString(3, password);
-                rs = st.executeQuery();
+                pst.setString(1, idpetugas);
+                pst.setString(2, namapetugas);
+                pst.setString(3, password);
+                rs = pst.executeQuery();
 
                 if(rs.next())
                 {
@@ -274,7 +274,7 @@ public class LoginFormPetugas extends javax.swing.JFrame {
                     this.dispose();
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "ID Petugas / Nama Petugas / Password Salah", "Login Error", 2);
+                    JOptionPane.showMessageDialog(null, "ID Petugas / Nama Petugas / Password Salah", "Error", 2);
                 }
 
             } catch (SQLException ex) {
@@ -288,7 +288,7 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         char idpetugas = evt.getKeyChar();
         if(!(Character.isDigit(idpetugas) || (idpetugas==KeyEvent.VK_BACK_SPACE)) || (idpetugas==KeyEvent.VK_DELETE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "ID Petugas harus berupa angka");
+            JOptionPane.showMessageDialog(null, "ID harus berupa angka");
         }
     }//GEN-LAST:event_txtIDPetugasKeyTyped
 

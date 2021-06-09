@@ -26,7 +26,7 @@ public class connection {
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver());
                 mysqlconnection = (Connection) DriverManager.getConnection(db,user,password);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+                JOptionPane.showMessageDialog(null, "Koneksi Gagal", "Error", 2);
             }
         } return mysqlconnection;
     }
