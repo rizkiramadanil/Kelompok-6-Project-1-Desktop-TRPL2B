@@ -7,6 +7,7 @@ package sisteminformasipuskesmas;
 
 import java.awt.Color;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +16,7 @@ import javax.swing.JFrame;
 public class BerandaFormAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form BerandaForm
+     * Creates new form BerandaFormAdmin
      */
     public BerandaFormAdmin() {
         initComponents();
@@ -35,36 +36,46 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lblClose = new javax.swing.JLabel();
         lblMinimize = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         pnlBeranda = new javax.swing.JPanel();
-        lblBeranda = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pnlPasien = new javax.swing.JPanel();
-        lblPasien = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         pnlDokter = new javax.swing.JPanel();
-        lblDokter = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        pnlPetugas = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         pnlFarmasi = new javax.swing.JPanel();
-        lblFarmasi = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         pnlLaporan = new javax.swing.JPanel();
-        lblLaporan = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         pnlPengaturan = new javax.swing.JPanel();
-        lblPengaturan = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         pnlKeluar = new javax.swing.JPanel();
-        lblKeluar = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         panel1.setBackground(new java.awt.Color(228, 241, 254));
-        panel1.setPreferredSize(new java.awt.Dimension(720, 512));
+        panel1.setMinimumSize(new java.awt.Dimension(1680, 945));
+        panel1.setPreferredSize(new java.awt.Dimension(1680, 945));
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(27, 117, 188));
+        jPanel2.setBackground(new java.awt.Color(10, 61, 98));
 
-        lblClose.setFont(new java.awt.Font("Tahoma", 1, 25)); // NOI18N
-        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/close24.png"))); // NOI18N
-        lblClose.setText("x");
+        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/closeicon.png"))); // NOI18N
         lblClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -72,10 +83,7 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
             }
         });
 
-        lblMinimize.setFont(new java.awt.Font("Tahoma", 1, 34)); // NOI18N
-        lblMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/minimize24.png"))); // NOI18N
-        lblMinimize.setText("-");
-        lblMinimize.setToolTipText("");
+        lblMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/minimizeicon.png"))); // NOI18N
         lblMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,303 +96,400 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(646, Short.MAX_VALUE)
-                .addComponent(lblMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMinimize)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblClose, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblClose)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblClose, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                    .addComponent(lblMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClose)
+                    .addComponent(lblMinimize))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(27, 117, 188));
-        jLabel1.setText("SISTEM INFORMASI PUSKESMAS");
+        panel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1680, -1));
 
-        jPanel3.setBackground(new java.awt.Color(39, 170, 225));
+        jPanel1.setBackground(new java.awt.Color(54, 70, 78));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlBeranda.setBackground(new java.awt.Color(27, 117, 188));
-
-        lblBeranda.setBackground(new java.awt.Color(27, 117, 188));
-        lblBeranda.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblBeranda.setForeground(new java.awt.Color(255, 255, 255));
-        lblBeranda.setText("  Beranda");
-        lblBeranda.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlBeranda.setBackground(new java.awt.Color(47, 54, 64));
+        pnlBeranda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlBeranda.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblBerandaMouseClicked(evt);
+                pnlBerandaMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblBerandaMouseEntered(evt);
+                pnlBerandaMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblBerandaMouseExited(evt);
+                pnlBerandaMouseExited(evt);
             }
         });
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-beranda.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Beranda");
 
         javax.swing.GroupLayout pnlBerandaLayout = new javax.swing.GroupLayout(pnlBeranda);
         pnlBeranda.setLayout(pnlBerandaLayout);
         pnlBerandaLayout.setHorizontalGroup(
             pnlBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBeranda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlBerandaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlBerandaLayout.setVerticalGroup(
             pnlBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblBeranda, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlBerandaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel4)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        pnlPasien.setBackground(new java.awt.Color(39, 170, 225));
+        jPanel1.add(pnlBeranda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 80));
 
-        lblPasien.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblPasien.setForeground(new java.awt.Color(255, 255, 255));
-        lblPasien.setText("  Pasien");
-        lblPasien.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlPasien.setBackground(new java.awt.Color(54, 70, 78));
+        pnlPasien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlPasien.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlPasien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblPasienMouseClicked(evt);
+                pnlPasienMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblPasienMouseEntered(evt);
+                pnlPasienMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblPasienMouseExited(evt);
+                pnlPasienMouseExited(evt);
             }
         });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-pasien.png"))); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Pasien");
 
         javax.swing.GroupLayout pnlPasienLayout = new javax.swing.GroupLayout(pnlPasien);
         pnlPasien.setLayout(pnlPasienLayout);
         pnlPasienLayout.setHorizontalGroup(
             pnlPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPasien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlPasienLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPasienLayout.setVerticalGroup(
             pnlPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPasien, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addGroup(pnlPasienLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel6)
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlDokter.setBackground(new java.awt.Color(39, 170, 225));
+        jPanel1.add(pnlPasien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 80));
 
-        lblDokter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblDokter.setForeground(new java.awt.Color(255, 255, 255));
-        lblDokter.setText("  Dokter");
-        lblDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlDokter.setBackground(new java.awt.Color(54, 70, 78));
+        pnlDokter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlDokter.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlDokter.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblDokterMouseClicked(evt);
+                pnlDokterMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblDokterMouseEntered(evt);
+                pnlDokterMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblDokterMouseExited(evt);
+                pnlDokterMouseExited(evt);
             }
         });
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-dokter.png"))); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Dokter");
 
         javax.swing.GroupLayout pnlDokterLayout = new javax.swing.GroupLayout(pnlDokter);
         pnlDokter.setLayout(pnlDokterLayout);
         pnlDokterLayout.setHorizontalGroup(
             pnlDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDokter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlDokterLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlDokterLayout.setVerticalGroup(
             pnlDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblDokter, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addGroup(pnlDokterLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel8)
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlFarmasi.setBackground(new java.awt.Color(39, 170, 225));
+        jPanel1.add(pnlDokter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 240, 80));
 
-        lblFarmasi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblFarmasi.setForeground(new java.awt.Color(255, 255, 255));
-        lblFarmasi.setText("  Farmasi");
-        lblFarmasi.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlPetugas.setBackground(new java.awt.Color(54, 70, 78));
+        pnlPetugas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlPetugas.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlPetugas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblFarmasiMouseClicked(evt);
+                pnlPetugasMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblFarmasiMouseEntered(evt);
+                pnlPetugasMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblFarmasiMouseExited(evt);
+                pnlPetugasMouseExited(evt);
             }
         });
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-petugas.png"))); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Petugas");
+
+        javax.swing.GroupLayout pnlPetugasLayout = new javax.swing.GroupLayout(pnlPetugas);
+        pnlPetugas.setLayout(pnlPetugasLayout);
+        pnlPetugasLayout.setHorizontalGroup(
+            pnlPetugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPetugasLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        pnlPetugasLayout.setVerticalGroup(
+            pnlPetugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(pnlPetugasLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pnlPetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 240, 80));
+
+        pnlFarmasi.setBackground(new java.awt.Color(54, 70, 78));
+        pnlFarmasi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlFarmasi.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlFarmasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlFarmasiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlFarmasiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlFarmasiMouseExited(evt);
+            }
+        });
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-farmasi.png"))); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Farmasi");
 
         javax.swing.GroupLayout pnlFarmasiLayout = new javax.swing.GroupLayout(pnlFarmasi);
         pnlFarmasi.setLayout(pnlFarmasiLayout);
         pnlFarmasiLayout.setHorizontalGroup(
             pnlFarmasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFarmasi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlFarmasiLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlFarmasiLayout.setVerticalGroup(
             pnlFarmasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblFarmasi, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addGroup(pnlFarmasiLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel12)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlLaporan.setBackground(new java.awt.Color(39, 170, 225));
+        jPanel1.add(pnlFarmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 80));
 
-        lblLaporan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblLaporan.setForeground(new java.awt.Color(255, 255, 255));
-        lblLaporan.setText("  Laporan");
-        lblLaporan.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlLaporan.setBackground(new java.awt.Color(54, 70, 78));
+        pnlLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlLaporan.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlLaporan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblLaporanMouseClicked(evt);
+                pnlLaporanMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblLaporanMouseEntered(evt);
+                pnlLaporanMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblLaporanMouseExited(evt);
+                pnlLaporanMouseExited(evt);
             }
         });
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-laporan.png"))); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Laporan");
 
         javax.swing.GroupLayout pnlLaporanLayout = new javax.swing.GroupLayout(pnlLaporan);
         pnlLaporan.setLayout(pnlLaporanLayout);
         pnlLaporanLayout.setHorizontalGroup(
             pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlLaporanLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlLaporanLayout.setVerticalGroup(
             pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addGroup(pnlLaporanLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel14)
+                .addContainerGap(28, Short.MAX_VALUE))
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlPengaturan.setBackground(new java.awt.Color(39, 170, 225));
+        jPanel1.add(pnlLaporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
-        lblPengaturan.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblPengaturan.setForeground(new java.awt.Color(255, 255, 255));
-        lblPengaturan.setText("  Pengaturan");
-        lblPengaturan.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlPengaturan.setBackground(new java.awt.Color(54, 70, 78));
+        pnlPengaturan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlPengaturan.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlPengaturan.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblPengaturanMouseClicked(evt);
+                pnlPengaturanMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblPengaturanMouseEntered(evt);
+                pnlPengaturanMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblPengaturanMouseExited(evt);
+                pnlPengaturanMouseExited(evt);
             }
         });
+
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-pengaturan.png"))); // NOI18N
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Pengaturan");
 
         javax.swing.GroupLayout pnlPengaturanLayout = new javax.swing.GroupLayout(pnlPengaturan);
         pnlPengaturan.setLayout(pnlPengaturanLayout);
         pnlPengaturanLayout.setHorizontalGroup(
             pnlPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+            .addGroup(pnlPengaturanLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel16)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         pnlPengaturanLayout.setVerticalGroup(
             pnlPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addGroup(pnlPengaturanLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel16)
+                .addContainerGap(27, Short.MAX_VALUE))
+            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pnlKeluar.setBackground(new java.awt.Color(39, 170, 225));
+        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
 
-        lblKeluar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblKeluar.setForeground(new java.awt.Color(255, 255, 255));
-        lblKeluar.setText("  Keluar");
-        lblKeluar.addMouseListener(new java.awt.event.MouseAdapter() {
+        pnlKeluar.setBackground(new java.awt.Color(54, 70, 78));
+        pnlKeluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlKeluar.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlKeluar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblKeluarMouseClicked(evt);
+                pnlKeluarMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblKeluarMouseEntered(evt);
+                pnlKeluarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblKeluarMouseExited(evt);
+                pnlKeluarMouseExited(evt);
             }
         });
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-keluar.png"))); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Keluar");
 
         javax.swing.GroupLayout pnlKeluarLayout = new javax.swing.GroupLayout(pnlKeluar);
         pnlKeluar.setLayout(pnlKeluarLayout);
         pnlKeluarLayout.setHorizontalGroup(
             pnlKeluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlKeluarLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlKeluarLayout.setVerticalGroup(
             pnlKeluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+            .addGroup(pnlKeluarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel18)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 240, 80));
+
+        panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlBeranda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlPasien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlDokter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlFarmasi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlPengaturan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(pnlKeluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 1440, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(pnlBeranda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlDokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlFarmasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlPengaturan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlKeluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 820, Short.MAX_VALUE)
         );
 
-        jPanel4.setBackground(new java.awt.Color(245, 246, 250));
+        panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 583, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo-SIP_Menu.png"))); // NOI18N
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 70));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
-        panel1.setLayout(panel1Layout);
-        panel1Layout.setHorizontalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        panel1Layout.setVerticalGroup(
-            panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel2.setFont(new java.awt.Font("Calibri", 1, 44)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(27, 117, 188));
+        jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 62, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -404,150 +509,183 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+        // TODO add your handling code here:
+        int answer = JOptionPane.showOptionDialog(this, "Ingin keluar aplikasi?", "Keluar Aplikasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        if(answer==JOptionPane.YES_OPTION)
+        {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_lblCloseMouseClicked
+
     private void lblMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMouseClicked
         // TODO add your handling code here:
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_lblMinimizeMouseClicked
 
-    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+    private void pnlBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_lblCloseMouseClicked
-
-    private void lblBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBerandaMouseClicked
-        // TODO add your handling code here:
-        BerandaFormAdmin brdf = new BerandaFormAdmin();
-        brdf.setVisible(true);
-        brdf.pack();
-        brdf.setLocationRelativeTo(null);
-        brdf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        BerandaFormAdmin brdfa = new BerandaFormAdmin();
+        brdfa.setVisible(true);
+        brdfa.pack();
+        brdfa.setLocationRelativeTo(null);
+        brdfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_lblBerandaMouseClicked
+    }//GEN-LAST:event_pnlBerandaMouseClicked
 
-    private void lblBerandaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBerandaMouseEntered
+    private void pnlBerandaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseEntered
         // TODO add your handling code here:
-//        lblBeranda.setForeground(new Color(27,117,188));
-    }//GEN-LAST:event_lblBerandaMouseEntered
+        pnlBeranda.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlBerandaMouseEntered
 
-    private void lblBerandaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBerandaMouseExited
+    private void pnlBerandaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseExited
         // TODO add your handling code here:
-        lblBeranda.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_lblBerandaMouseExited
+        pnlBeranda.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlBerandaMouseExited
 
-    private void lblPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPasienMouseClicked
+    private void pnlPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseClicked
         // TODO add your handling code here:
-        PasienForm psnf = new PasienForm();
-        psnf.setVisible(true);
-        psnf.pack();
-        psnf.setLocationRelativeTo(null);
-        psnf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        PasienFormAdmin psnfa = new PasienFormAdmin();
+        psnfa.setVisible(true);
+        psnfa.pack();
+        psnfa.setLocationRelativeTo(null);
+        psnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_lblPasienMouseClicked
+    }//GEN-LAST:event_pnlPasienMouseClicked
 
-    private void lblPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPasienMouseEntered
+    private void pnlPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseEntered
         // TODO add your handling code here:
-        lblPasien.setForeground(new Color(27,117,188));
-    }//GEN-LAST:event_lblPasienMouseEntered
+        pnlPasien.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPasienMouseEntered
 
-    private void lblPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPasienMouseExited
+    private void pnlPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseExited
         // TODO add your handling code here:
-        lblPasien.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_lblPasienMouseExited
+        pnlPasien.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlPasienMouseExited
 
-    private void lblDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDokterMouseClicked
+    private void pnlDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseClicked
         // TODO add your handling code here:
-        DokterFormAdmin dtrf = new DokterFormAdmin();
-        dtrf.setVisible(true);
-        dtrf.pack();
-        dtrf.setLocationRelativeTo(null);
-        dtrf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        DokterFormAdmin dtrfa = new DokterFormAdmin();
+        dtrfa.setVisible(true);
+        dtrfa.pack();
+        dtrfa.setLocationRelativeTo(null);
+        dtrfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_lblDokterMouseClicked
+    }//GEN-LAST:event_pnlDokterMouseClicked
 
-    private void lblDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDokterMouseEntered
+    private void pnlDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseEntered
         // TODO add your handling code here:
-        lblDokter.setForeground(new Color(27,117,188));
-    }//GEN-LAST:event_lblDokterMouseEntered
+        pnlDokter.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlDokterMouseEntered
 
-    private void lblDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDokterMouseExited
+    private void pnlDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseExited
         // TODO add your handling code here:
-        lblDokter.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_lblDokterMouseExited
+        pnlDokter.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlDokterMouseExited
 
-    private void lblFarmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFarmasiMouseClicked
+    private void pnlPetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseClicked
         // TODO add your handling code here:
-        FarmasiFormAdmin fmsf = new FarmasiFormAdmin();
-        fmsf.setVisible(true);
-        fmsf.pack();
-        fmsf.setLocationRelativeTo(null);
-        fmsf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        PetugasFormAdmin ptgfa = new PetugasFormAdmin();
+        ptgfa.setVisible(true);
+        ptgfa.pack();
+        ptgfa.setLocationRelativeTo(null);
+        ptgfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_lblFarmasiMouseClicked
+    }//GEN-LAST:event_pnlPetugasMouseClicked
 
-    private void lblFarmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFarmasiMouseEntered
+    private void pnlPetugasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseEntered
         // TODO add your handling code here:
-        lblFarmasi.setForeground(new Color(27,117,188));
-    }//GEN-LAST:event_lblFarmasiMouseEntered
+        pnlPetugas.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPetugasMouseEntered
 
-    private void lblFarmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFarmasiMouseExited
+    private void pnlPetugasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseExited
         // TODO add your handling code here:
-        lblFarmasi.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_lblFarmasiMouseExited
+        pnlPetugas.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlPetugasMouseExited
 
-    private void lblLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLaporanMouseClicked
+    private void pnlFarmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseClicked
         // TODO add your handling code here:
-        LaporanFormAdmin lprf = new LaporanFormAdmin();
-        lprf.setVisible(true);
-        lprf.pack();
-        lprf.setLocationRelativeTo(null);
-        lprf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        FarmasiFormAdmin fmsfa = new FarmasiFormAdmin();
+        fmsfa.setVisible(true);
+        fmsfa.pack();
+        fmsfa.setLocationRelativeTo(null);
+        fmsfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_lblLaporanMouseClicked
+    }//GEN-LAST:event_pnlFarmasiMouseClicked
 
-    private void lblLaporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLaporanMouseEntered
+    private void pnlFarmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseEntered
         // TODO add your handling code here:
-        lblLaporan.setForeground(new Color(27,117,188));
-    }//GEN-LAST:event_lblLaporanMouseEntered
+        pnlFarmasi.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlFarmasiMouseEntered
 
-    private void lblLaporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLaporanMouseExited
+    private void pnlFarmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseExited
         // TODO add your handling code here:
-        lblLaporan.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_lblLaporanMouseExited
+        pnlFarmasi.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlFarmasiMouseExited
 
-    private void lblPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPengaturanMouseClicked
+    private void pnlLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseClicked
         // TODO add your handling code here:
-        PengaturanFormAdmin pgtrnf = new PengaturanFormAdmin();
-        pgtrnf.setVisible(true);
-        pgtrnf.pack();
-        pgtrnf.setLocationRelativeTo(null);
-        pgtrnf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        LaporanFormAdmin lprfa = new LaporanFormAdmin();
+        lprfa.setVisible(true);
+        lprfa.pack();
+        lprfa.setLocationRelativeTo(null);
+        lprfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
-    }//GEN-LAST:event_lblPengaturanMouseClicked
+    }//GEN-LAST:event_pnlLaporanMouseClicked
 
-    private void lblPengaturanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPengaturanMouseEntered
+    private void pnlLaporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseEntered
         // TODO add your handling code here:
-        lblPengaturan.setForeground(new Color(27,117,188));
-    }//GEN-LAST:event_lblPengaturanMouseEntered
+        pnlLaporan.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlLaporanMouseEntered
 
-    private void lblPengaturanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPengaturanMouseExited
+    private void pnlLaporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseExited
         // TODO add your handling code here:
-        lblPengaturan.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_lblPengaturanMouseExited
+        pnlLaporan.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlLaporanMouseExited
 
-    private void lblKeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKeluarMouseClicked
+    private void pnlPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_lblKeluarMouseClicked
+        PengaturanFormAdmin pgtrnfa = new PengaturanFormAdmin();
+        pgtrnfa.setVisible(true);
+        pgtrnfa.pack();
+        pgtrnfa.setLocationRelativeTo(null);
+        pgtrnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlPengaturanMouseClicked
 
-    private void lblKeluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKeluarMouseEntered
+    private void pnlPengaturanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseEntered
         // TODO add your handling code here:
-        lblKeluar.setForeground(new Color(27,117,188));
-    }//GEN-LAST:event_lblKeluarMouseEntered
+        pnlPengaturan.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPengaturanMouseEntered
 
-    private void lblKeluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKeluarMouseExited
+    private void pnlPengaturanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseExited
         // TODO add your handling code here:
-        lblKeluar.setForeground(new Color(255,255,255));
-    }//GEN-LAST:event_lblKeluarMouseExited
+        pnlPengaturan.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlPengaturanMouseExited
+
+    private void pnlKeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseClicked
+        // TODO add your handling code here:
+        int answer = JOptionPane.showOptionDialog(this, "Ingin keluar akun?", "Keluar Akun", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        if(answer==JOptionPane.YES_OPTION)
+        {
+            LoginForm lgf = new LoginForm();
+            lgf.setVisible(true);
+            lgf.pack();
+            lgf.setLocationRelativeTo(null);
+            lgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+    }//GEN-LAST:event_pnlKeluarMouseClicked
+
+    private void pnlKeluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseEntered
+        // TODO add your handling code here:
+        pnlKeluar.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlKeluarMouseEntered
+
+    private void pnlKeluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseExited
+        // TODO add your handling code here:
+        pnlKeluar.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlKeluarMouseExited
 
     /**
      * @param args the command line arguments
@@ -575,7 +713,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(BerandaFormAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -587,19 +724,28 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel lblBeranda;
     private javax.swing.JLabel lblClose;
-    private javax.swing.JLabel lblDokter;
-    private javax.swing.JLabel lblFarmasi;
-    private javax.swing.JLabel lblKeluar;
-    private javax.swing.JLabel lblLaporan;
     private javax.swing.JLabel lblMinimize;
-    private javax.swing.JLabel lblPasien;
-    private javax.swing.JLabel lblPengaturan;
     private java.awt.Panel panel1;
     private javax.swing.JPanel pnlBeranda;
     private javax.swing.JPanel pnlDokter;
@@ -608,5 +754,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlLaporan;
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPengaturan;
+    private javax.swing.JPanel pnlPetugas;
     // End of variables declaration//GEN-END:variables
 }
