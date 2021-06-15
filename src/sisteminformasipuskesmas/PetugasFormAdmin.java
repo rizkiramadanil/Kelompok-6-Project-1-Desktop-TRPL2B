@@ -9,6 +9,9 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -24,7 +27,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     /**
      * Creates new form PetugasFormAdmin
      */
-    
+    public String fdcTanggalLahir;
     private DefaultTableModel model;
     
     public PetugasFormAdmin() {
@@ -43,6 +46,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rbtgJenisKelamin = new javax.swing.ButtonGroup();
         panel1 = new java.awt.Panel();
         jPanel2 = new javax.swing.JPanel();
         lblClose = new javax.swing.JLabel();
@@ -83,12 +87,16 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
-        cbxJenisKelamin = new javax.swing.JComboBox<>();
         jLabel22 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtAlamat = new javax.swing.JTextArea();
         jLabel24 = new javax.swing.JLabel();
         txtNoHP = new javax.swing.JTextField();
+        rbtLakiLaki = new javax.swing.JRadioButton();
+        rbtPerempuan = new javax.swing.JRadioButton();
+        jLabel26 = new javax.swing.JLabel();
+        txtTempatLahir = new javax.swing.JTextField();
+        dcTanggalLahir = new com.toedter.calendar.JDateChooser();
         jPanel5 = new javax.swing.JPanel();
         btnSimpan = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
@@ -100,6 +108,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panel1.setBackground(new java.awt.Color(228, 241, 254));
         panel1.setMinimumSize(new java.awt.Dimension(1680, 945));
@@ -548,9 +557,6 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel23.setText("Jenis Kelamin");
 
-        cbxJenisKelamin.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        cbxJenisKelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan" }));
-
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel22.setText("Alamat");
 
@@ -569,6 +575,26 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             }
         });
 
+        rbtgJenisKelamin.add(rbtLakiLaki);
+        rbtLakiLaki.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        rbtLakiLaki.setText("Laki-Laki");
+
+        rbtgJenisKelamin.add(rbtPerempuan);
+        rbtPerempuan.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        rbtPerempuan.setText("Perempuan");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel26.setText("Tempat, Tanggal Lahir");
+
+        txtTempatLahir.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
+        dcTanggalLahir.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        dcTanggalLahir.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dcTanggalLahirPropertyChange(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -578,25 +604,35 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel21)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel22))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNoHP)
-                            .addComponent(cbxJenisKelamin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtIDPetugas)
                             .addComponent(txtNamaPetugas)
-                            .addComponent(jScrollPane2)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19)
                                     .addComponent(jLabel20)
                                     .addComponent(jLabel24))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addGap(0, 317, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(318, 380, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(txtTempatLahir, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dcTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel23)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(rbtLakiLaki)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtPerempuan))
+                            .addComponent(jLabel26))
+                        .addGap(12, 12, 12))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -614,13 +650,21 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel23)
+                .addComponent(jLabel26)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(dcTanggalLahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTempatLahir))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel23)
+                .addGap(6, 6, 6)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtLakiLaki)
+                    .addComponent(rbtPerempuan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -671,11 +715,11 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -707,9 +751,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(349, 349, 349)
@@ -729,10 +773,10 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1))
-                .addContainerGap(57, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
@@ -946,15 +990,25 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         String idpetugas = txtIDPetugas.getText();
         String namapetugas = txtIDPetugas.getText();
         String password = txtIDPetugas.getText();
-        String jeniskelamin = (String)cbxJenisKelamin.getSelectedItem();
+        String tempatlahir = txtTempatLahir.getText();
+        String tanggallahir = fdcTanggalLahir;
+        String jeniskelamin = null;
         String alamat = txtAlamat.getText();
         String nohp = txtNoHP.getText();
+        
+        if(rbtLakiLaki.isSelected()){
+            jeniskelamin = "Laki-Laki";
+        }
+        else if(rbtPerempuan.isSelected()){
+            jeniskelamin = "Perempuan";
+        }
         
         if(checkID(idpetugas)){
             JOptionPane.showMessageDialog(null, "ID sudah ada", "Error", 2);
         }
         else if(idpetugas.trim().equals("") || namapetugas.trim().equals("") || password.trim().equals("")
-                || jeniskelamin.trim().equals("") || alamat.trim().equals("") || nohp.trim().equals(""))
+                || tempatlahir.trim().equals("") || tanggallahir.trim().equals("") || jeniskelamin.trim().equals("")
+                || alamat.trim().equals("") || nohp.trim().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Error", 2);
         } else{
@@ -966,7 +1020,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                             +txtIDPetugas.getText()+"','"
                             +txtNamaPetugas.getText()+"','"
                             +txtPassword.getText()+"','"
-                            +cbxJenisKelamin.getSelectedItem()+"','"
+                            +txtTempatLahir.getText()+"','"
+                            +fdcTanggalLahir+"','"
+                            +jeniskelamin+"','"
                             +txtAlamat.getText()+"','"
                             +txtNoHP.getText()+"')";
                     java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
@@ -997,21 +1053,31 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
         // TODO add your handling code here:
         String idpetugas = txtIDPetugas.getText();
-        String namapetugas = txtNamaPetugas.getText();
-        String password = txtPassword.getText();
-        String jeniskelamin = (String)cbxJenisKelamin.getSelectedItem();
+        String namapetugas = txtIDPetugas.getText();
+        String password = txtIDPetugas.getText();
+        String tempatlahir = txtTempatLahir.getText();
+        String tanggallahir = fdcTanggalLahir;
+        String jeniskelamin = null;
         String alamat = txtAlamat.getText();
         String nohp = txtNoHP.getText();
         
+        if(rbtLakiLaki.isSelected()){
+            jeniskelamin = "Laki-Laki";
+        }
+        else if(rbtPerempuan.isSelected()){
+            jeniskelamin = "Perempuan";
+        }
+        
         if(idpetugas.trim().equals("") || namapetugas.trim().equals("") || password.trim().equals("")
-                || jeniskelamin.trim().equals("") || alamat.trim().equals("") || nohp.trim().equals(""))
+           || tempatlahir.trim().equals("") || tanggallahir.trim().equals("") || jeniskelamin.trim().equals("")
+           || alamat.trim().equals("") || nohp.trim().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Pilih data yang ingin diubah", "Error", 2);
         }
         else if(!checkID(idpetugas)){
             JOptionPane.showMessageDialog(null, "Data yang akan diubah tidak ditemukan", "Error", 2);
         } else{
-            int answer = JOptionPane.showOptionDialog(this, "Yakin update data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            int answer = JOptionPane.showOptionDialog(this, "Yakin ubah data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
             if(answer==JOptionPane.YES_OPTION)
             {
                 try {
@@ -1019,7 +1085,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                     String sql = "update petugas_rm set id_petugas='" + txtIDPetugas.getText()+
                                 "', nama_petugas='" + txtNamaPetugas.getText()+
                                 "', password='" + txtPassword.getText()+
-                                "', jenis_kelamin='" + cbxJenisKelamin.getSelectedItem()+
+                                "', tempat_lahir='" + txtTempatLahir.getText()+
+                                "', tanggal_lahir='" + fdcTanggalLahir+
+                                "', jenis_kelamin='" + jeniskelamin+
                                 "', alamat='" + txtAlamat.getText()+
                                 "', no_hp='" + txtNoHP.getText()+
                                 "' where id_petugas='" + txtIDPetugas.getText()+"'";
@@ -1089,6 +1157,8 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         tabel.addColumn("ID");
         tabel.addColumn("Nama Petugas");
         tabel.addColumn("Password");
+        tabel.addColumn("Tempat Lahir");
+        tabel.addColumn("Tanggal Lahir");
         tabel.addColumn("Jenis Kelamin");
         tabel.addColumn("Alamat");
         tabel.addColumn("No HP");
@@ -1104,7 +1174,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 rs.getString(3),
                 rs.getString(4),
                 rs.getString(5),
-                rs.getString(6)});
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8)});
             }
             tblData.setModel(tabel);
             load_data();
@@ -1119,10 +1191,32 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         txtIDPetugas.setText(tblData.getValueAt(tabel, 0).toString());
         txtNamaPetugas.setText(tblData.getValueAt(tabel, 1).toString());
         txtPassword.setText(tblData.getValueAt(tabel, 2).toString());
-        cbxJenisKelamin.setSelectedItem(tblData.getValueAt(tabel, 3).toString());
-        txtAlamat.setText(tblData.getValueAt(tabel, 4).toString());
-        txtNoHP.setText(tblData.getValueAt(tabel, 5).toString());
+        txtTempatLahir.setText(tblData.getValueAt(tabel, 3).toString());
+        try {
+            int tabeldate = tblData.getSelectedRow();
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)tblData.getValueAt(tabeldate, 4));
+            dcTanggalLahir.setDate(date);
+        } catch (Exception ex) {
+            Logger.getLogger(PetugasFormAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        String jeniskelamin = tblData.getValueAt(tabel, 5).toString();
+        if(jeniskelamin.equals("Laki-Laki")){
+            rbtLakiLaki.setSelected(true);
+        }
+        else {
+            rbtPerempuan.setSelected(true);
+        }
+        txtAlamat.setText(tblData.getValueAt(tabel, 6).toString());
+        txtNoHP.setText(tblData.getValueAt(tabel, 7).toString());
     }//GEN-LAST:event_tblDataMouseClicked
+
+    private void dcTanggalLahirPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dcTanggalLahirPropertyChange
+        // TODO add your handling code here:
+        if(dcTanggalLahir.getDate()!=null){
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            fdcTanggalLahir = format.format(dcTanggalLahir.getDate());
+        }
+    }//GEN-LAST:event_dcTanggalLahirPropertyChange
     
     public boolean checkID(String idpetugas){
         boolean id_exist = false;
@@ -1166,7 +1260,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         txtIDPetugas.setText("");
         txtNamaPetugas.setText("");
         txtPassword.setText("");
-        cbxJenisKelamin.setSelectedItem("");
+        txtTempatLahir.setText("");
+        dcTanggalLahir.setDate(null);
+        rbtgJenisKelamin.clearSelection();
         txtAlamat.setText("");
         txtNoHP.setText("");
         txtIDPetugas.requestFocus();
@@ -1188,9 +1284,11 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 o [0] = rs.getString("id_petugas");
                 o [1] = rs.getString("nama_petugas");
                 o [2] = rs.getString("passsword");
-                o [3] = rs.getString("jenis_kelamin");
-                o [4] = rs.getString("alamat");
-                o [5] = rs.getString("no_hp");
+                o [3] = rs.getString("tempat_lahir");
+                o [4] = rs.getString("tanggal_lahir");
+                o [5] = rs.getString("jenis_kelamin");
+                o [6] = rs.getString("alamat");
+                o [7] = rs.getString("no_hp");
                 
                 model.addRow(o);
             }
@@ -1206,6 +1304,8 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         tabel.addColumn("ID");
         tabel.addColumn("Nama Petugas");
         tabel.addColumn("Password");
+        tabel.addColumn("Tempat Lahir");
+        tabel.addColumn("Tanggal Lahir");
         tabel.addColumn("Jenis Kelamin");
         tabel.addColumn("Alamat");
         tabel.addColumn("No HP");
@@ -1221,7 +1321,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
                 rs.getString(3),
                 rs.getString(4),
                 rs.getString(5),
-                rs.getString(6)});
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8)});
             }
             tblData.setModel(tabel);
         } catch (Exception e) {
@@ -1268,7 +1370,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnHapus;
     private javax.swing.JButton btnSimpan;
     private javax.swing.JButton btnUbah;
-    private javax.swing.JComboBox<String> cbxJenisKelamin;
+    private com.toedter.calendar.JDateChooser dcTanggalLahir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1287,6 +1389,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1312,6 +1415,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPengaturan;
     private javax.swing.JPanel pnlPetugas;
+    private javax.swing.JRadioButton rbtLakiLaki;
+    private javax.swing.JRadioButton rbtPerempuan;
+    private javax.swing.ButtonGroup rbtgJenisKelamin;
     private javax.swing.JTable tblData;
     private javax.swing.JTextArea txtAlamat;
     private javax.swing.JTextField txtCariData;
@@ -1319,5 +1425,6 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField txtNamaPetugas;
     private javax.swing.JTextField txtNoHP;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtTempatLahir;
     // End of variables declaration//GEN-END:variables
 }

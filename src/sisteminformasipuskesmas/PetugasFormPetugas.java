@@ -77,6 +77,7 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panel1.setBackground(new java.awt.Color(228, 241, 254));
         panel1.setMinimumSize(new java.awt.Dimension(1680, 945));
@@ -741,7 +742,8 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         DefaultTableModel tabel = new DefaultTableModel();
         tabel.addColumn("ID");
         tabel.addColumn("Nama Petugas");
-        tabel.addColumn("Password");
+        tabel.addColumn("Tempat Lahir");
+        tabel.addColumn("Tanggal Lahir");
         tabel.addColumn("Jenis Kelamin");
         tabel.addColumn("Alamat");
         tabel.addColumn("No HP");
@@ -752,17 +754,18 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
             ResultSet rs = pst.executeQuery(sql);
             while(rs.next()){
                 tabel.addRow(new Object[]{
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6)});
-        }
-        tblData.setModel(tabel);
-        load_data();
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8)});
+            }
+            tblData.setModel(tabel);
+            load_data();
         } catch (Exception e) {
-
+           
         }
     }//GEN-LAST:event_txtCariDataKeyTyped
 
@@ -781,10 +784,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
                 Object[] o = new Object[6];
                 o [0] = rs.getString("id_petugas");
                 o [1] = rs.getString("nama_petugas");
-                o [2] = rs.getString("passsword");
-                o [3] = rs.getString("jenis_kelamin");
-                o [4] = rs.getString("alamat");
-                o [5] = rs.getString("no_hp");
+                o [3] = rs.getString("tempat_lahir");
+                o [4] = rs.getString("tanggal_lahir");
+                o [5] = rs.getString("jenis_kelamin");
+                o [6] = rs.getString("alamat");
+                o [7] = rs.getString("no_hp");
                 
                 model.addRow(o);
             }
@@ -799,7 +803,8 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         DefaultTableModel tabel = new DefaultTableModel();
         tabel.addColumn("ID");
         tabel.addColumn("Nama Petugas");
-        tabel.addColumn("Password");
+        tabel.addColumn("Tempat Lahir");
+        tabel.addColumn("Tanggal Lahir");
         tabel.addColumn("Jenis Kelamin");
         tabel.addColumn("Alamat");
         tabel.addColumn("No HP");
@@ -812,10 +817,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
                 tabel.addRow(new Object[]{
                 rs.getString(1),
                 rs.getString(2),
-                rs.getString(3),
                 rs.getString(4),
                 rs.getString(5),
-                rs.getString(6)});
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8)});
             }
             tblData.setModel(tabel);
         } catch (Exception e) {
