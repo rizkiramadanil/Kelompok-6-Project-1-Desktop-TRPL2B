@@ -233,12 +233,12 @@ public class LoginFormPetugas extends javax.swing.JFrame {
 
     private void btnLoginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseEntered
         // TODO add your handling code here:
-        btnLogin.setBackground(new Color(27,117,188));
+//        btnLogin.setBackground(new Color(27,117,188));
     }//GEN-LAST:event_btnLoginMouseEntered
 
     private void btnLoginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseExited
         // TODO add your handling code here:
-        btnLogin.setBackground(new Color(37,116,169));
+//        btnLogin.setBackground(new Color(37,116,169));
     }//GEN-LAST:event_btnLoginMouseExited
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed

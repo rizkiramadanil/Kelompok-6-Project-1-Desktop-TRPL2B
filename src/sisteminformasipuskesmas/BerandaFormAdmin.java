@@ -52,9 +52,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         pnlFarmasi = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        pnlLaporan = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         pnlPengaturan = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -336,50 +333,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
 
         jPanel1.add(pnlFarmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 80));
 
-        pnlLaporan.setBackground(new java.awt.Color(54, 70, 78));
-        pnlLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlLaporan.setPreferredSize(new java.awt.Dimension(240, 80));
-        pnlLaporan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseExited(evt);
-            }
-        });
-
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-laporan.png"))); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Laporan");
-
-        javax.swing.GroupLayout pnlLaporanLayout = new javax.swing.GroupLayout(pnlLaporan);
-        pnlLaporan.setLayout(pnlLaporanLayout);
-        pnlLaporanLayout.setHorizontalGroup(
-            pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLaporanLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlLaporanLayout.setVerticalGroup(
-            pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLaporanLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel14)
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(pnlLaporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
-
         pnlPengaturan.setBackground(new java.awt.Color(54, 70, 78));
         pnlPengaturan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlPengaturan.setPreferredSize(new java.awt.Dimension(240, 80));
@@ -422,7 +375,7 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
         pnlKeluar.setBackground(new java.awt.Color(54, 70, 78));
         pnlKeluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -466,7 +419,7 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 240, 80));
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
@@ -623,26 +576,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         pnlFarmasi.setBackground(new Color(54,70,78));
     }//GEN-LAST:event_pnlFarmasiMouseExited
 
-    private void pnlLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseClicked
-        // TODO add your handling code here:
-        LaporanFormAdmin lprfa = new LaporanFormAdmin();
-        lprfa.setVisible(true);
-        lprfa.pack();
-        lprfa.setLocationRelativeTo(null);
-        lprfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlLaporanMouseClicked
-
-    private void pnlLaporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseEntered
-        // TODO add your handling code here:
-        pnlLaporan.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlLaporanMouseEntered
-
-    private void pnlLaporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseExited
-        // TODO add your handling code here:
-        pnlLaporan.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlLaporanMouseExited
-
     private void pnlPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseClicked
         // TODO add your handling code here:
         PengaturanFormAdmin pgtrnfa = new PengaturanFormAdmin();
@@ -727,8 +660,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -751,7 +682,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDokter;
     private javax.swing.JPanel pnlFarmasi;
     private javax.swing.JPanel pnlKeluar;
-    private javax.swing.JPanel pnlLaporan;
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPengaturan;
     private javax.swing.JPanel pnlPetugas;

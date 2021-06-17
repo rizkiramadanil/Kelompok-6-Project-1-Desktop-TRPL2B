@@ -52,9 +52,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
         pnlFarmasi = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        pnlLaporan = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         pnlPengaturan = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -336,50 +333,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
 
         jPanel1.add(pnlFarmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 80));
 
-        pnlLaporan.setBackground(new java.awt.Color(54, 70, 78));
-        pnlLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlLaporan.setPreferredSize(new java.awt.Dimension(240, 80));
-        pnlLaporan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseExited(evt);
-            }
-        });
-
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-laporan.png"))); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Laporan");
-
-        javax.swing.GroupLayout pnlLaporanLayout = new javax.swing.GroupLayout(pnlLaporan);
-        pnlLaporan.setLayout(pnlLaporanLayout);
-        pnlLaporanLayout.setHorizontalGroup(
-            pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLaporanLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlLaporanLayout.setVerticalGroup(
-            pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLaporanLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel14)
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(pnlLaporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
-
         pnlPengaturan.setBackground(new java.awt.Color(54, 70, 78));
         pnlPengaturan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlPengaturan.setPreferredSize(new java.awt.Dimension(240, 80));
@@ -422,7 +375,7 @@ public class PasienFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
         pnlKeluar.setBackground(new java.awt.Color(54, 70, 78));
         pnlKeluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -466,7 +419,7 @@ public class PasienFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 240, 80));
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
@@ -509,159 +462,15 @@ public class PasienFormAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+    private void pnlKeluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseExited
         // TODO add your handling code here:
-        int answer = JOptionPane.showOptionDialog(this, "Ingin keluar aplikasi?", "Keluar Aplikasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
-        if(answer==JOptionPane.YES_OPTION)
-        {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_lblCloseMouseClicked
+        pnlKeluar.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlKeluarMouseExited
 
-    private void lblMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMouseClicked
+    private void pnlKeluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseEntered
         // TODO add your handling code here:
-        this.setState(JFrame.ICONIFIED);
-    }//GEN-LAST:event_lblMinimizeMouseClicked
-
-    private void pnlBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseClicked
-        // TODO add your handling code here:
-        BerandaFormAdmin brdfa = new BerandaFormAdmin();
-        brdfa.setVisible(true);
-        brdfa.pack();
-        brdfa.setLocationRelativeTo(null);
-        brdfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlBerandaMouseClicked
-
-    private void pnlBerandaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseEntered
-        // TODO add your handling code here:
-        pnlBeranda.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlBerandaMouseEntered
-
-    private void pnlBerandaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseExited
-        // TODO add your handling code here:
-        pnlBeranda.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlBerandaMouseExited
-
-    private void pnlPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseClicked
-        // TODO add your handling code here:
-        PasienFormAdmin psnfa = new PasienFormAdmin();
-        psnfa.setVisible(true);
-        psnfa.pack();
-        psnfa.setLocationRelativeTo(null);
-        psnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlPasienMouseClicked
-
-    private void pnlPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseEntered
-        // TODO add your handling code here:
-        pnlPasien.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlPasienMouseEntered
-
-    private void pnlPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseExited
-        // TODO add your handling code here:
-        pnlPasien.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlPasienMouseExited
-
-    private void pnlDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseClicked
-        // TODO add your handling code here:
-        DokterFormAdmin dtrfa = new DokterFormAdmin();
-        dtrfa.setVisible(true);
-        dtrfa.pack();
-        dtrfa.setLocationRelativeTo(null);
-        dtrfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlDokterMouseClicked
-
-    private void pnlDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseEntered
-        // TODO add your handling code here:
-        pnlDokter.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlDokterMouseEntered
-
-    private void pnlDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseExited
-        // TODO add your handling code here:
-        pnlDokter.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlDokterMouseExited
-
-    private void pnlPetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseClicked
-        // TODO add your handling code here:
-        PetugasFormAdmin ptgfa = new PetugasFormAdmin();
-        ptgfa.setVisible(true);
-        ptgfa.pack();
-        ptgfa.setLocationRelativeTo(null);
-        ptgfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlPetugasMouseClicked
-
-    private void pnlPetugasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseEntered
-        // TODO add your handling code here:
-        pnlPetugas.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlPetugasMouseEntered
-
-    private void pnlPetugasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseExited
-        // TODO add your handling code here:
-        pnlPetugas.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlPetugasMouseExited
-
-    private void pnlFarmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseClicked
-        // TODO add your handling code here:
-        FarmasiFormAdmin fmsfa = new FarmasiFormAdmin();
-        fmsfa.setVisible(true);
-        fmsfa.pack();
-        fmsfa.setLocationRelativeTo(null);
-        fmsfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlFarmasiMouseClicked
-
-    private void pnlFarmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseEntered
-        // TODO add your handling code here:
-        pnlFarmasi.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlFarmasiMouseEntered
-
-    private void pnlFarmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseExited
-        // TODO add your handling code here:
-        pnlFarmasi.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlFarmasiMouseExited
-
-    private void pnlLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseClicked
-        // TODO add your handling code here:
-        LaporanFormAdmin lprfa = new LaporanFormAdmin();
-        lprfa.setVisible(true);
-        lprfa.pack();
-        lprfa.setLocationRelativeTo(null);
-        lprfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlLaporanMouseClicked
-
-    private void pnlLaporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseEntered
-        // TODO add your handling code here:
-        pnlLaporan.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlLaporanMouseEntered
-
-    private void pnlLaporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseExited
-        // TODO add your handling code here:
-        pnlLaporan.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlLaporanMouseExited
-
-    private void pnlPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseClicked
-        // TODO add your handling code here:
-        PengaturanFormAdmin pgtrnfa = new PengaturanFormAdmin();
-        pgtrnfa.setVisible(true);
-        pgtrnfa.pack();
-        pgtrnfa.setLocationRelativeTo(null);
-        pgtrnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlPengaturanMouseClicked
-
-    private void pnlPengaturanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseEntered
-        // TODO add your handling code here:
-        pnlPengaturan.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlPengaturanMouseEntered
-
-    private void pnlPengaturanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseExited
-        // TODO add your handling code here:
-        pnlPengaturan.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlPengaturanMouseExited
+        pnlKeluar.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlKeluarMouseEntered
 
     private void pnlKeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseClicked
         // TODO add your handling code here:
@@ -677,15 +486,139 @@ public class PasienFormAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pnlKeluarMouseClicked
 
-    private void pnlKeluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseEntered
+    private void pnlPengaturanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseExited
         // TODO add your handling code here:
-        pnlKeluar.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlKeluarMouseEntered
+        pnlPengaturan.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlPengaturanMouseExited
 
-    private void pnlKeluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseExited
+    private void pnlPengaturanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseEntered
         // TODO add your handling code here:
-        pnlKeluar.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlKeluarMouseExited
+        pnlPengaturan.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPengaturanMouseEntered
+
+    private void pnlPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseClicked
+        // TODO add your handling code here:
+        PengaturanFormAdmin pgtrnfa = new PengaturanFormAdmin();
+        pgtrnfa.setVisible(true);
+        pgtrnfa.pack();
+        pgtrnfa.setLocationRelativeTo(null);
+        pgtrnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlPengaturanMouseClicked
+
+    private void pnlFarmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseExited
+        // TODO add your handling code here:
+        pnlFarmasi.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlFarmasiMouseExited
+
+    private void pnlFarmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseEntered
+        // TODO add your handling code here:
+        pnlFarmasi.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlFarmasiMouseEntered
+
+    private void pnlFarmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseClicked
+        // TODO add your handling code here:
+        FarmasiFormAdmin fmsfa = new FarmasiFormAdmin();
+        fmsfa.setVisible(true);
+        fmsfa.pack();
+        fmsfa.setLocationRelativeTo(null);
+        fmsfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlFarmasiMouseClicked
+
+    private void pnlPetugasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseExited
+        // TODO add your handling code here:
+        pnlPetugas.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlPetugasMouseExited
+
+    private void pnlPetugasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseEntered
+        // TODO add your handling code here:
+        pnlPetugas.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPetugasMouseEntered
+
+    private void pnlPetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseClicked
+        // TODO add your handling code here:
+        PetugasFormAdmin ptgfa = new PetugasFormAdmin();
+        ptgfa.setVisible(true);
+        ptgfa.pack();
+        ptgfa.setLocationRelativeTo(null);
+        ptgfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlPetugasMouseClicked
+
+    private void pnlDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseExited
+        // TODO add your handling code here:
+        pnlDokter.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlDokterMouseExited
+
+    private void pnlDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseEntered
+        // TODO add your handling code here:
+        pnlDokter.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlDokterMouseEntered
+
+    private void pnlDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseClicked
+        // TODO add your handling code here:
+        DokterFormAdmin dtrfa = new DokterFormAdmin();
+        dtrfa.setVisible(true);
+        dtrfa.pack();
+        dtrfa.setLocationRelativeTo(null);
+        dtrfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlDokterMouseClicked
+
+    private void pnlPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseExited
+        // TODO add your handling code here:
+        pnlPasien.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPasienMouseExited
+
+    private void pnlPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseEntered
+        // TODO add your handling code here:
+        pnlPasien.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPasienMouseEntered
+
+    private void pnlPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseClicked
+        // TODO add your handling code here:
+        PasienFormAdmin psnfa = new PasienFormAdmin();
+        psnfa.setVisible(true);
+        psnfa.pack();
+        psnfa.setLocationRelativeTo(null);
+        psnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlPasienMouseClicked
+
+    private void pnlBerandaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseExited
+        // TODO add your handling code here:
+        pnlBeranda.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlBerandaMouseExited
+
+    private void pnlBerandaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseEntered
+        // TODO add your handling code here:
+        pnlBeranda.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlBerandaMouseEntered
+
+    private void pnlBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseClicked
+        // TODO add your handling code here:
+        BerandaFormAdmin brdfa = new BerandaFormAdmin();
+        brdfa.setVisible(true);
+        brdfa.pack();
+        brdfa.setLocationRelativeTo(null);
+        brdfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlBerandaMouseClicked
+
+    private void lblMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMouseClicked
+        // TODO add your handling code here:
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizeMouseClicked
+
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+        // TODO add your handling code here:
+        int answer = JOptionPane.showOptionDialog(this, "Ingin keluar aplikasi?", "Keluar Aplikasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        if(answer==JOptionPane.YES_OPTION)
+        {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_lblCloseMouseClicked
 
     /**
      * @param args the command line arguments
@@ -727,8 +660,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -751,7 +682,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDokter;
     private javax.swing.JPanel pnlFarmasi;
     private javax.swing.JPanel pnlKeluar;
-    private javax.swing.JPanel pnlLaporan;
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPengaturan;
     private javax.swing.JPanel pnlPetugas;

@@ -6,11 +6,21 @@
 package sisteminformasipuskesmas;
 
 import java.awt.Color;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -59,9 +69,6 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         pnlFarmasi = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        pnlLaporan = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         pnlPengaturan = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -73,6 +80,7 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
+        btnPrintData = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -347,50 +355,6 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
 
         jPanel1.add(pnlFarmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 80));
 
-        pnlLaporan.setBackground(new java.awt.Color(54, 70, 78));
-        pnlLaporan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlLaporan.setPreferredSize(new java.awt.Dimension(240, 80));
-        pnlLaporan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlLaporanMouseExited(evt);
-            }
-        });
-
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-laporan.png"))); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Laporan");
-
-        javax.swing.GroupLayout pnlLaporanLayout = new javax.swing.GroupLayout(pnlLaporan);
-        pnlLaporan.setLayout(pnlLaporanLayout);
-        pnlLaporanLayout.setHorizontalGroup(
-            pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLaporanLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel14)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pnlLaporanLayout.setVerticalGroup(
-            pnlLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLaporanLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel14)
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(pnlLaporan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
-
         pnlPengaturan.setBackground(new java.awt.Color(54, 70, 78));
         pnlPengaturan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlPengaturan.setPreferredSize(new java.awt.Dimension(240, 80));
@@ -433,7 +397,7 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
         pnlKeluar.setBackground(new java.awt.Color(54, 70, 78));
         pnlKeluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -477,7 +441,7 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, 240, 80));
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
@@ -504,19 +468,29 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblData);
 
+        btnPrintData.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnPrintData.setText("Print Data");
+        btnPrintData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(527, 527, 527)
-                .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(638, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(btnPrintData)
+                        .addGap(410, 410, 410)
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1416, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -525,10 +499,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
+                    .addComponent(jLabel25)
+                    .addComponent(btnPrintData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
@@ -575,11 +550,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
 
     private void pnlBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseClicked
         // TODO add your handling code here:
-        BerandaFormAdmin brdfa = new BerandaFormAdmin();
-        brdfa.setVisible(true);
-        brdfa.pack();
-        brdfa.setLocationRelativeTo(null);
-        brdfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        BerandaFormPetugas brdfp = new BerandaFormPetugas();
+        brdfp.setVisible(true);
+        brdfp.pack();
+        brdfp.setLocationRelativeTo(null);
+        brdfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_pnlBerandaMouseClicked
 
@@ -595,11 +570,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
 
     private void pnlPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseClicked
         // TODO add your handling code here:
-        PasienFormAdmin psnfa = new PasienFormAdmin();
-        psnfa.setVisible(true);
-        psnfa.pack();
-        psnfa.setLocationRelativeTo(null);
-        psnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        PasienFormPetugas psnfp = new PasienFormPetugas();
+        psnfp.setVisible(true);
+        psnfp.pack();
+        psnfp.setLocationRelativeTo(null);
+        psnfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_pnlPasienMouseClicked
 
@@ -615,11 +590,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
 
     private void pnlDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseClicked
         // TODO add your handling code here:
-        DokterFormAdmin dtrfa = new DokterFormAdmin();
-        dtrfa.setVisible(true);
-        dtrfa.pack();
-        dtrfa.setLocationRelativeTo(null);
-        dtrfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        DokterFormPetugas dtrfp = new DokterFormPetugas();
+        dtrfp.setVisible(true);
+        dtrfp.pack();
+        dtrfp.setLocationRelativeTo(null);
+        dtrfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_pnlDokterMouseClicked
 
@@ -635,11 +610,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
 
     private void pnlPetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseClicked
         // TODO add your handling code here:
-        PetugasFormAdmin ptgfa = new PetugasFormAdmin();
-        ptgfa.setVisible(true);
-        ptgfa.pack();
-        ptgfa.setLocationRelativeTo(null);
-        ptgfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        PetugasFormPetugas ptgfp = new PetugasFormPetugas();
+        ptgfp.setVisible(true);
+        ptgfp.pack();
+        ptgfp.setLocationRelativeTo(null);
+        ptgfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_pnlPetugasMouseClicked
 
@@ -655,11 +630,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
 
     private void pnlFarmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseClicked
         // TODO add your handling code here:
-        FarmasiFormAdmin fmsfa = new FarmasiFormAdmin();
-        fmsfa.setVisible(true);
-        fmsfa.pack();
-        fmsfa.setLocationRelativeTo(null);
-        fmsfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        FarmasiFormPetugas fmsfp = new FarmasiFormPetugas();
+        fmsfp.setVisible(true);
+        fmsfp.pack();
+        fmsfp.setLocationRelativeTo(null);
+        fmsfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_pnlFarmasiMouseClicked
 
@@ -673,33 +648,13 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         pnlFarmasi.setBackground(new Color(54,70,78));
     }//GEN-LAST:event_pnlFarmasiMouseExited
 
-    private void pnlLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseClicked
-        // TODO add your handling code here:
-        LaporanFormAdmin lprfa = new LaporanFormAdmin();
-        lprfa.setVisible(true);
-        lprfa.pack();
-        lprfa.setLocationRelativeTo(null);
-        lprfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlLaporanMouseClicked
-
-    private void pnlLaporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseEntered
-        // TODO add your handling code here:
-        pnlLaporan.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlLaporanMouseEntered
-
-    private void pnlLaporanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlLaporanMouseExited
-        // TODO add your handling code here:
-        pnlLaporan.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlLaporanMouseExited
-
     private void pnlPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseClicked
         // TODO add your handling code here:
-        PengaturanFormAdmin pgtrnfa = new PengaturanFormAdmin();
-        pgtrnfa.setVisible(true);
-        pgtrnfa.pack();
-        pgtrnfa.setLocationRelativeTo(null);
-        pgtrnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        PengaturanFormPetugas pgtrnfp = new PengaturanFormPetugas();
+        pgtrnfp.setVisible(true);
+        pgtrnfp.pack();
+        pgtrnfp.setLocationRelativeTo(null);
+        pgtrnfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();
     }//GEN-LAST:event_pnlPengaturanMouseClicked
 
@@ -768,6 +723,27 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
            
         }
     }//GEN-LAST:event_txtCariDataKeyTyped
+
+    private void btnPrintDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintDataActionPerformed
+        // TODO add your handling code here:
+        File reportFile = new File(".");
+        String dirr = "";
+        
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from petugas_rm";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            dirr = reportFile.getCanonicalPath() + "/src/sisteminformasipuskesmas/data/";
+            JasperDesign design = JRXmlLoader.load(dirr + "laporanpetugas.jrxml");
+            JasperReport report = JasperCompileManager.compileReport(design);
+            ResultSet rs = pst.executeQuery(sql);
+            JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
+            JasperPrint jp = JasperFillManager.fillReport(report, new HashMap(), rsDataSource);
+            JasperViewer.viewReport(jp);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPrintDataActionPerformed
 
     public void load_data(){
         model.getDataVector().removeAllElements();
@@ -864,12 +840,11 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPrintData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -894,7 +869,6 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDokter;
     private javax.swing.JPanel pnlFarmasi;
     private javax.swing.JPanel pnlKeluar;
-    private javax.swing.JPanel pnlLaporan;
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPengaturan;
     private javax.swing.JPanel pnlPetugas;

@@ -192,22 +192,22 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btnAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminMouseEntered
         // TODO add your handling code here:
-        btnAdmin.setBackground(new Color(27,117,188));
+//        btnAdmin.setBackground(new Color(27,117,188));
     }//GEN-LAST:event_btnAdminMouseEntered
 
     private void btnAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdminMouseExited
         // TODO add your handling code here:
-        btnAdmin.setBackground(new Color(37,116,169));
+//        btnAdmin.setBackground(new Color(37,116,169));
     }//GEN-LAST:event_btnAdminMouseExited
 
     private void btnPetugasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPetugasMouseEntered
         // TODO add your handling code here:
-        btnPetugas.setBackground(new Color(27,117,188));
+//        btnPetugas.setBackground(new Color(27,117,188));
     }//GEN-LAST:event_btnPetugasMouseEntered
 
     private void btnPetugasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPetugasMouseExited
         // TODO add your handling code here:
-        btnPetugas.setBackground(new Color(37,116,169));
+//        btnPetugas.setBackground(new Color(37,116,169));
     }//GEN-LAST:event_btnPetugasMouseExited
 
     /**
