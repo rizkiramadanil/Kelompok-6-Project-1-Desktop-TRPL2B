@@ -384,16 +384,19 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel13.setText("INFO APLIKASI");
 
+        jPanel4.setPreferredSize(new java.awt.Dimension(700, 300));
+
         lblInfoAplikasi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblInfoAplikasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblInfoAplikasi.setText("Sistem Informasi Puskesmas atau SIP merupakan aplikasi desktop yang berfungsi untuk membantu pelayanan puskesmas.");
+        lblInfoAplikasi.setText("<html>Sistem Informasi Puskesmas atau SIP merupakan sebuah aplikasi desktop yang digunakan oleh petugas puskesmas sehingga akan mempermudah dan mempercepat pekerjaannya dalam mengolah data-data puskesmas.<html>");
+        lblInfoAplikasi.setToolTipText("");
         lblInfoAplikasi.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblInfoAplikasi, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(lblInfoAplikasi, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,8 +411,8 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(395, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 921, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(474, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
