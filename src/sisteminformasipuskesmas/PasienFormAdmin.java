@@ -52,9 +52,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
         pnlFarmasi = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        pnlPengaturan = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         pnlKeluar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -333,50 +330,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
 
         jPanel1.add(pnlFarmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 80));
 
-        pnlPengaturan.setBackground(new java.awt.Color(54, 70, 78));
-        pnlPengaturan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        pnlPengaturan.setPreferredSize(new java.awt.Dimension(240, 80));
-        pnlPengaturan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pnlPengaturanMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlPengaturanMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pnlPengaturanMouseExited(evt);
-            }
-        });
-
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-pengaturan.png"))); // NOI18N
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Pengaturan");
-
-        javax.swing.GroupLayout pnlPengaturanLayout = new javax.swing.GroupLayout(pnlPengaturan);
-        pnlPengaturan.setLayout(pnlPengaturanLayout);
-        pnlPengaturanLayout.setHorizontalGroup(
-            pnlPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPengaturanLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel16)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        pnlPengaturanLayout.setVerticalGroup(
-            pnlPengaturanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPengaturanLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel16)
-                .addContainerGap(27, Short.MAX_VALUE))
-            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(pnlPengaturan, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
-
         pnlKeluar.setBackground(new java.awt.Color(54, 70, 78));
         pnlKeluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         pnlKeluar.setPreferredSize(new java.awt.Dimension(240, 80));
@@ -419,7 +372,7 @@ public class PasienFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
@@ -485,26 +438,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_pnlKeluarMouseClicked
-
-    private void pnlPengaturanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseExited
-        // TODO add your handling code here:
-        pnlPengaturan.setBackground(new Color(54,70,78));
-    }//GEN-LAST:event_pnlPengaturanMouseExited
-
-    private void pnlPengaturanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseEntered
-        // TODO add your handling code here:
-        pnlPengaturan.setBackground(new Color(47,54,64));
-    }//GEN-LAST:event_pnlPengaturanMouseEntered
-
-    private void pnlPengaturanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPengaturanMouseClicked
-        // TODO add your handling code here:
-        PengaturanFormAdmin pgtrnfa = new PengaturanFormAdmin();
-        pgtrnfa.setVisible(true);
-        pgtrnfa.pack();
-        pgtrnfa.setLocationRelativeTo(null);
-        pgtrnfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_pnlPengaturanMouseClicked
 
     private void pnlFarmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseExited
         // TODO add your handling code here:
@@ -660,8 +593,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -683,7 +614,6 @@ public class PasienFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFarmasi;
     private javax.swing.JPanel pnlKeluar;
     private javax.swing.JPanel pnlPasien;
-    private javax.swing.JPanel pnlPengaturan;
     private javax.swing.JPanel pnlPetugas;
     // End of variables declaration//GEN-END:variables
 }
