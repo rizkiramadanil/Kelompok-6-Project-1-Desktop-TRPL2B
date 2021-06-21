@@ -133,7 +133,7 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel3.setText("ID");
+        jLabel3.setText("ID Petugas");
 
         txtIDPetugas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtIDPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -288,7 +288,7 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         char idpetugas = evt.getKeyChar();
         if(!(Character.isDigit(idpetugas) || (idpetugas==KeyEvent.VK_BACK_SPACE)) || (idpetugas==KeyEvent.VK_DELETE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "ID harus berupa angka");
+            JOptionPane.showMessageDialog(null, "ID Petugas harus berupa angka");
         }
     }//GEN-LAST:event_txtIDPetugasKeyTyped
 

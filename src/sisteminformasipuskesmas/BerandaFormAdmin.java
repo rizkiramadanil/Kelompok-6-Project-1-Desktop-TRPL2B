@@ -57,6 +57,9 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         pnlKeluar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        pnlRekamMedis = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -278,7 +281,7 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPetugasLayout.setVerticalGroup(
             pnlPetugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,7 +380,51 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+
+        pnlRekamMedis.setBackground(new java.awt.Color(54, 70, 78));
+        pnlRekamMedis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlRekamMedis.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlRekamMedis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseExited(evt);
+            }
+        });
+
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-rekammedis.png"))); // NOI18N
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Rekam Medis");
+
+        javax.swing.GroupLayout pnlRekamMedisLayout = new javax.swing.GroupLayout(pnlRekamMedis);
+        pnlRekamMedis.setLayout(pnlRekamMedisLayout);
+        pnlRekamMedisLayout.setHorizontalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel15)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRekamMedisLayout.setVerticalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel15)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pnlRekamMedis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
@@ -590,6 +637,26 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
         pnlKeluar.setBackground(new Color(54,70,78));
     }//GEN-LAST:event_pnlKeluarMouseExited
 
+    private void pnlRekamMedisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseClicked
+        // TODO add your handling code here:
+        RekamMedisFormAdmin rmfa = new RekamMedisFormAdmin();
+        rmfa.setVisible(true);
+        rmfa.pack();
+        rmfa.setLocationRelativeTo(null);
+        rmfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlRekamMedisMouseClicked
+
+    private void pnlRekamMedisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseEntered
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlRekamMedisMouseEntered
+
+    private void pnlRekamMedisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseExited
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlRekamMedisMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -631,6 +698,8 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -655,5 +724,6 @@ public class BerandaFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlKeluar;
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPetugas;
+    private javax.swing.JPanel pnlRekamMedis;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,30 @@
  */
 package sisteminformasipuskesmas;
 
+import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+
 /**
  *
  * @author Asus
@@ -14,8 +38,14 @@ public class PasienFormPetugas extends javax.swing.JFrame {
     /**
      * Creates new form PasienFormPetugas
      */
+    public String fdcTanggalLahir;
+    private DefaultTableModel model;
+    
     public PasienFormPetugas() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        tabel_data();
+        txtNomorPendaftaran.requestFocus();
     }
 
     /**
@@ -27,22 +57,1189 @@ public class PasienFormPetugas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        rbtgJenisKelamin = new javax.swing.ButtonGroup();
+        panel1 = new java.awt.Panel();
+        jPanel2 = new javax.swing.JPanel();
+        lblClose = new javax.swing.JLabel();
+        lblMinimize = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        pnlBeranda = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        pnlPasien = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        pnlDokter = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        pnlPetugas = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        pnlFarmasi = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        pnlKeluar = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        pnlRekamMedis = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblData = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        txtNomorPendaftaran = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtNamaPasien = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txtTempatLahir = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAlamat = new javax.swing.JTextArea();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        txtNoHP = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        txtUmur = new javax.swing.JTextField();
+        rbtLakiLaki = new javax.swing.JRadioButton();
+        rbtPerempuan = new javax.swing.JRadioButton();
+        dcTanggalLahir = new com.toedter.calendar.JDateChooser();
+        jPanel6 = new javax.swing.JPanel();
+        btnSimpan = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
+        txtCariData = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        btnPrintData = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+
+        panel1.setBackground(new java.awt.Color(228, 241, 254));
+        panel1.setMinimumSize(new java.awt.Dimension(1680, 945));
+        panel1.setPreferredSize(new java.awt.Dimension(1680, 945));
+        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(10, 61, 98));
+
+        lblClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/closeicon.png"))); // NOI18N
+        lblClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCloseMouseClicked(evt);
+            }
+        });
+
+        lblMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/minimizeicon.png"))); // NOI18N
+        lblMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizeMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMinimize)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblClose)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClose)
+                    .addComponent(lblMinimize))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1680, -1));
+
+        jPanel1.setBackground(new java.awt.Color(54, 70, 78));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pnlBeranda.setBackground(new java.awt.Color(54, 70, 78));
+        pnlBeranda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlBeranda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlBerandaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlBerandaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlBerandaMouseExited(evt);
+            }
+        });
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-beranda.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Beranda");
+
+        javax.swing.GroupLayout pnlBerandaLayout = new javax.swing.GroupLayout(pnlBeranda);
+        pnlBeranda.setLayout(pnlBerandaLayout);
+        pnlBerandaLayout.setHorizontalGroup(
+            pnlBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBerandaLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlBerandaLayout.setVerticalGroup(
+            pnlBerandaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlBerandaLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel4)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pnlBeranda, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 80));
+
+        pnlPasien.setBackground(new java.awt.Color(47, 54, 64));
+        pnlPasien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlPasien.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlPasien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlPasienMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlPasienMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlPasienMouseExited(evt);
+            }
+        });
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-pasien.png"))); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Pasien");
+
+        javax.swing.GroupLayout pnlPasienLayout = new javax.swing.GroupLayout(pnlPasien);
+        pnlPasien.setLayout(pnlPasienLayout);
+        pnlPasienLayout.setHorizontalGroup(
+            pnlPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPasienLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlPasienLayout.setVerticalGroup(
+            pnlPasienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPasienLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel6)
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pnlPasien, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 240, 80));
+
+        pnlDokter.setBackground(new java.awt.Color(54, 70, 78));
+        pnlDokter.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlDokter.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlDokterMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlDokterMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlDokterMouseExited(evt);
+            }
+        });
+
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-dokter.png"))); // NOI18N
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Dokter");
+
+        javax.swing.GroupLayout pnlDokterLayout = new javax.swing.GroupLayout(pnlDokter);
+        pnlDokter.setLayout(pnlDokterLayout);
+        pnlDokterLayout.setHorizontalGroup(
+            pnlDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDokterLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlDokterLayout.setVerticalGroup(
+            pnlDokterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDokterLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel8)
+                .addContainerGap(23, Short.MAX_VALUE))
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pnlDokter, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 240, 80));
+
+        pnlPetugas.setBackground(new java.awt.Color(54, 70, 78));
+        pnlPetugas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlPetugas.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlPetugas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlPetugasMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlPetugasMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlPetugasMouseExited(evt);
+            }
+        });
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-petugas.png"))); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Petugas");
+
+        javax.swing.GroupLayout pnlPetugasLayout = new javax.swing.GroupLayout(pnlPetugas);
+        pnlPetugas.setLayout(pnlPetugasLayout);
+        pnlPetugasLayout.setHorizontalGroup(
+            pnlPetugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPetugasLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        pnlPetugasLayout.setVerticalGroup(
+            pnlPetugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(pnlPetugasLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pnlPetugas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 240, 80));
+
+        pnlFarmasi.setBackground(new java.awt.Color(54, 70, 78));
+        pnlFarmasi.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlFarmasi.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlFarmasi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlFarmasiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlFarmasiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlFarmasiMouseExited(evt);
+            }
+        });
+
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-farmasi.png"))); // NOI18N
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Farmasi");
+
+        javax.swing.GroupLayout pnlFarmasiLayout = new javax.swing.GroupLayout(pnlFarmasi);
+        pnlFarmasi.setLayout(pnlFarmasiLayout);
+        pnlFarmasiLayout.setHorizontalGroup(
+            pnlFarmasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFarmasiLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlFarmasiLayout.setVerticalGroup(
+            pnlFarmasiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFarmasiLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel12)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pnlFarmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 240, 80));
+
+        pnlKeluar.setBackground(new java.awt.Color(54, 70, 78));
+        pnlKeluar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlKeluar.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlKeluar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlKeluarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlKeluarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlKeluarMouseExited(evt);
+            }
+        });
+
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-keluar.png"))); // NOI18N
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("Keluar");
+
+        javax.swing.GroupLayout pnlKeluarLayout = new javax.swing.GroupLayout(pnlKeluar);
+        pnlKeluar.setLayout(pnlKeluarLayout);
+        pnlKeluarLayout.setHorizontalGroup(
+            pnlKeluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKeluarLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel18)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlKeluarLayout.setVerticalGroup(
+            pnlKeluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlKeluarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel18)
+                .addContainerGap(26, Short.MAX_VALUE))
+            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+
+        pnlRekamMedis.setBackground(new java.awt.Color(54, 70, 78));
+        pnlRekamMedis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlRekamMedis.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlRekamMedis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseExited(evt);
+            }
+        });
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-rekammedis.png"))); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Rekam Medis");
+
+        javax.swing.GroupLayout pnlRekamMedisLayout = new javax.swing.GroupLayout(pnlRekamMedis);
+        pnlRekamMedis.setLayout(pnlRekamMedisLayout);
+        pnlRekamMedisLayout.setHorizontalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRekamMedisLayout.setVerticalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pnlRekamMedis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
+
+        panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo-SIP_Menu.png"))); // NOI18N
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 70));
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 1, 44)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(27, 117, 188));
+        jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 62, -1, -1));
+
+        tblData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nomor Pendaftaran", "Nama Pasien ", "Tempat Lahir", "Tanggal Lahir", "Umur Pasien", "Jenis Kelamin", "Alamat", "No HP"
+            }
+        ));
+        tblData.setRowHeight(20);
+        tblData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblData);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Data Pasien", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel19.setText("Nomor Pendaftaran");
+
+        txtNomorPendaftaran.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtNomorPendaftaran.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomorPendaftaranKeyTyped(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel20.setText("Nama Pasien");
+
+        txtNamaPasien.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel21.setText("Tempat, Tanggal Lahir");
+
+        txtTempatLahir.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel23.setText("Jenis Kelamin");
+
+        txtAlamat.setColumns(20);
+        txtAlamat.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtAlamat.setRows(5);
+        jScrollPane2.setViewportView(txtAlamat);
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel26.setText("Alamat");
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel27.setText("No HP");
+
+        txtNoHP.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtNoHP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNoHPKeyTyped(evt);
+            }
+        });
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel24.setText("Umur");
+
+        txtUmur.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
+        rbtgJenisKelamin.add(rbtLakiLaki);
+        rbtLakiLaki.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        rbtLakiLaki.setText("Laki-Laki");
+
+        rbtgJenisKelamin.add(rbtPerempuan);
+        rbtPerempuan.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        rbtPerempuan.setText("Perempuan");
+
+        dcTanggalLahir.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        dcTanggalLahir.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dcTanggalLahirPropertyChange(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNoHP)
+                    .addComponent(txtNomorPendaftaran)
+                    .addComponent(txtNamaPasien)
+                    .addComponent(jScrollPane2)
+                    .addComponent(txtUmur)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(rbtLakiLaki)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtPerempuan))
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel23))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txtTempatLahir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dcTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNomorPendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNamaPasien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dcTanggalLahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUmur)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtLakiLaki)
+                    .addComponent(rbtPerempuan))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNoHP)
+                .addGap(17, 17, 17))
+        );
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Navigasi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+
+        btnSimpan.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        btnUbah.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnUbah.setText("Ubah");
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67)
+                .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(77, 77, 77)
+                .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSimpan)
+                    .addComponent(btnUbah)
+                    .addComponent(btnBatal))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        txtCariData.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtCariData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCariDataKeyTyped(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel25.setText("Cari Data");
+
+        btnPrintData.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnPrintData.setText("Print Data");
+        btnPrintData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintDataActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnPrintData)
+                .addGap(234, 234, 234)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(btnPrintData))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        panel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
+        // TODO add your handling code here:
+        int answer = JOptionPane.showOptionDialog(this, "Ingin keluar aplikasi?", "Keluar Aplikasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        if(answer==JOptionPane.YES_OPTION)
+        {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_lblCloseMouseClicked
+
+    private void lblMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMouseClicked
+        // TODO add your handling code here:
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizeMouseClicked
+
+    private void pnlBerandaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseClicked
+        // TODO add your handling code here:
+        BerandaFormPetugas brdfp = new BerandaFormPetugas();
+        brdfp.setVisible(true);
+        brdfp.pack();
+        brdfp.setLocationRelativeTo(null);
+        brdfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlBerandaMouseClicked
+
+    private void pnlBerandaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseEntered
+        // TODO add your handling code here:
+        pnlBeranda.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlBerandaMouseEntered
+
+    private void pnlBerandaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlBerandaMouseExited
+        // TODO add your handling code here:
+        pnlBeranda.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlBerandaMouseExited
+
+    private void pnlPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseClicked
+        // TODO add your handling code here:
+        PasienFormPetugas psnfp = new PasienFormPetugas();
+        psnfp.setVisible(true);
+        psnfp.pack();
+        psnfp.setLocationRelativeTo(null);
+        psnfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlPasienMouseClicked
+
+    private void pnlPasienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseEntered
+        // TODO add your handling code here:
+        pnlPasien.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPasienMouseEntered
+
+    private void pnlPasienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPasienMouseExited
+        // TODO add your handling code here:
+        pnlPasien.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPasienMouseExited
+
+    private void pnlDokterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseClicked
+        // TODO add your handling code here:
+        DokterFormPetugas dtrfp = new DokterFormPetugas();
+        dtrfp.setVisible(true);
+        dtrfp.pack();
+        dtrfp.setLocationRelativeTo(null);
+        dtrfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlDokterMouseClicked
+
+    private void pnlDokterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseEntered
+        // TODO add your handling code here:
+        pnlDokter.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlDokterMouseEntered
+
+    private void pnlDokterMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlDokterMouseExited
+        // TODO add your handling code here:
+        pnlDokter.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlDokterMouseExited
+
+    private void pnlPetugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseClicked
+        // TODO add your handling code here:
+        PetugasFormPetugas ptgfp = new PetugasFormPetugas();
+        ptgfp.setVisible(true);
+        ptgfp.pack();
+        ptgfp.setLocationRelativeTo(null);
+        ptgfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlPetugasMouseClicked
+
+    private void pnlPetugasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseEntered
+        // TODO add your handling code here:
+        pnlPetugas.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlPetugasMouseEntered
+
+    private void pnlPetugasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlPetugasMouseExited
+        // TODO add your handling code here:
+        pnlPetugas.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlPetugasMouseExited
+
+    private void pnlFarmasiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseClicked
+        // TODO add your handling code here:
+        FarmasiFormPetugas fmsfp = new FarmasiFormPetugas();
+        fmsfp.setVisible(true);
+        fmsfp.pack();
+        fmsfp.setLocationRelativeTo(null);
+        fmsfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlFarmasiMouseClicked
+
+    private void pnlFarmasiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseEntered
+        // TODO add your handling code here:
+        pnlFarmasi.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlFarmasiMouseEntered
+
+    private void pnlFarmasiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlFarmasiMouseExited
+        // TODO add your handling code here:
+        pnlFarmasi.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlFarmasiMouseExited
+
+    private void pnlKeluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseClicked
+        // TODO add your handling code here:
+        int answer = JOptionPane.showOptionDialog(this, "Ingin keluar akun?", "Keluar Akun", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+        if(answer==JOptionPane.YES_OPTION)
+        {
+            LoginForm lgf = new LoginForm();
+            lgf.setVisible(true);
+            lgf.pack();
+            lgf.setLocationRelativeTo(null);
+            lgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.dispose();
+        }
+    }//GEN-LAST:event_pnlKeluarMouseClicked
+
+    private void pnlKeluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseEntered
+        // TODO add your handling code here:
+        pnlKeluar.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlKeluarMouseEntered
+
+    private void pnlKeluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlKeluarMouseExited
+        // TODO add your handling code here:
+        pnlKeluar.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlKeluarMouseExited
+
+    private void tblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDataMouseClicked
+        // TODO add your handling code here:
+        int tabel = tblData.getSelectedRow();
+        txtNomorPendaftaran.setText(tblData.getValueAt(tabel, 0).toString());
+        txtNamaPasien.setText(tblData.getValueAt(tabel, 1).toString());
+        txtTempatLahir.setText(tblData.getValueAt(tabel, 2).toString());
+        try {
+            int tabeldate = tblData.getSelectedRow();
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)tblData.getValueAt(tabeldate, 3));
+            dcTanggalLahir.setDate(date);
+        } catch (Exception ex) {
+            Logger.getLogger(PetugasFormAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        txtUmur.setText(tblData.getValueAt(tabel, 4).toString());
+
+        String jeniskelamin = tblData.getValueAt(tabel, 5).toString();
+        if(jeniskelamin.equals("Laki-Laki")){
+            rbtLakiLaki.setSelected(true);
+        }
+        else {
+            rbtPerempuan.setSelected(true);
+        }
+        txtAlamat.setText(tblData.getValueAt(tabel, 6).toString());
+        txtNoHP.setText(tblData.getValueAt(tabel, 7).toString());
+    }//GEN-LAST:event_tblDataMouseClicked
+
+    private void txtNomorPendaftaranKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomorPendaftaranKeyTyped
+        // TODO add your handling code here:
+        char nomorpendaftaran = evt.getKeyChar();
+        if(!(Character.isDigit(nomorpendaftaran) || (nomorpendaftaran==KeyEvent.VK_BACK_SPACE)) || (nomorpendaftaran==KeyEvent.VK_DELETE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "Nomor Pendaftaran harus berupa angka");
+        }
+    }//GEN-LAST:event_txtNomorPendaftaranKeyTyped
+
+    private void txtNoHPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoHPKeyTyped
+        // TODO add your handling code here:
+        char nohp = evt.getKeyChar();
+        if(!(Character.isDigit(nohp) || (nohp==KeyEvent.VK_BACK_SPACE)) || (nohp==KeyEvent.VK_DELETE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "No HP harus berupa angka");
+        }
+    }//GEN-LAST:event_txtNoHPKeyTyped
+
+    private void dcTanggalLahirPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dcTanggalLahirPropertyChange
+        // TODO add your handling code here:
+        if(dcTanggalLahir.getDate()!=null){
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            fdcTanggalLahir = format.format(dcTanggalLahir.getDate());
+        }
+    }//GEN-LAST:event_dcTanggalLahirPropertyChange
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+        String nomorpendaftaran = txtNomorPendaftaran.getText();
+        String namapasien = txtNamaPasien.getText();
+        String tempatlahir = txtTempatLahir.getText();
+        String tanggallahir = fdcTanggalLahir;
+        String umurpasien = txtUmur.getText();
+        String jeniskelamin = null;
+        String alamat = txtAlamat.getText();
+        String nohp = txtNoHP.getText();
+        
+        if(rbtLakiLaki.isSelected()){
+            jeniskelamin = "Laki-Laki";
+        }
+        else if(rbtPerempuan.isSelected()){
+            jeniskelamin = "Perempuan";
+        }
+        
+        if(checkNomor(nomorpendaftaran)){
+            JOptionPane.showMessageDialog(null, "Nomor Pendaftaran sudah ada", "Error", 2);
+        }
+        else if(nomorpendaftaran.trim().equals("") || namapasien.trim().equals("") || tempatlahir.trim().equals("")
+            || tanggallahir.trim().equals("") || umurpasien.trim().equals("") || jeniskelamin.trim().equals("") || alamat.trim().equals("") || nohp.trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Error", 2);
+        }
+        else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin simpan data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION)
+            {
+                try {
+                    String sql = "insert into pasien values('"
+                    +txtNomorPendaftaran.getText()+"','"
+                    +txtNamaPasien.getText()+"','"
+                    +txtTempatLahir.getText()+"','"
+                    +fdcTanggalLahir+"','"
+                    +txtUmur.getText()+"','"
+                    +jeniskelamin+"','"
+                    +txtAlamat.getText()+"','"
+                    +txtNoHP.getText()+"')";
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.execute();
+                    JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+                    tabel_data();
+                    clear_form();
+                    txtNomorPendaftaran.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal disimpan", "Error", 2);
+                    clear_form();
+                    txtNomorPendaftaran.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        // TODO add your handling code here:
+        String nomorpendaftaran = txtNomorPendaftaran.getText();
+        String namapasien = txtNamaPasien.getText();
+        String tempatlahir = txtTempatLahir.getText();
+        String tanggallahir = fdcTanggalLahir;
+        String umurpasien = txtUmur.getText();
+        String jeniskelamin = null;
+        String alamat = txtAlamat.getText();
+        String nohp = txtNoHP.getText();
+        
+        if(rbtLakiLaki.isSelected()){
+            jeniskelamin = "Laki-Laki";
+        }
+        else if(rbtPerempuan.isSelected()){
+            jeniskelamin = "Perempuan";
+        }
+        
+        if(nomorpendaftaran.trim().equals("") || namapasien.trim().equals("") || tempatlahir.trim().equals("")
+            || tanggallahir.trim().equals("") || umurpasien.trim().equals("") || jeniskelamin.trim().equals("") || alamat.trim().equals("") || nohp.trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Pilih data yang ingin diubah", "Error", 2);
+        }
+        else if(!checkNomor(nomorpendaftaran)){
+            JOptionPane.showMessageDialog(null, "Data yang akan diubah tidak ditemukan", "Error", 2);
+        } else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin ubah data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION)
+            {
+                try {
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    String sql = "update pasien set nomorpendaftaran='" + txtNomorPendaftaran.getText()+
+                    "', nama_pasien='" + txtNamaPasien.getText()+
+                    "', tempatlahir_pasien='" + txtTempatLahir.getText()+
+                    "', tanggallahir_pasien='" + fdcTanggalLahir+
+                    "', umur_pasien='" + txtUmur.getText()+
+                    "', jenis_kelamin='" + jeniskelamin+
+                    "', alamat_pasien='" + txtAlamat.getText()+
+                    "', nohp_pasien='" + txtNoHP.getText()+
+                    "' where nomorpendaftaran='" + txtNomorPendaftaran.getText()+"'";
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Data berhasil diubah");
+                    tabel_data();
+                    clear_form();
+                    txtNomorPendaftaran.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal diubah", "Error", 2);
+                    clear_form();
+                    txtNomorPendaftaran.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        clear_form();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void txtCariDataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariDataKeyTyped
+        // TODO add your handling code here:
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("Nomor Pendaftaran");
+        tabel.addColumn("Nama Pasien");
+        tabel.addColumn("Tempat Lahir");
+        tabel.addColumn("Tanggal Lahir");
+        tabel.addColumn("Umur Pasien");
+        tabel.addColumn("Jenis Kelamin");
+        tabel.addColumn("Alamat");
+        tabel.addColumn("Nomor HP");
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from pasien where nomorpendaftaran like'%" + txtCariData.getText()+ "%' or nama_pasien like'%" + txtCariData.getText()+ "%'";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while(rs.next()){
+                tabel.addRow(new Object[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getString(7),
+                    rs.getString(8)});
+        }
+        tblData.setModel(tabel);
+        load_data();
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_txtCariDataKeyTyped
+
+    private void btnPrintDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintDataActionPerformed
+        // TODO add your handling code here:
+        File reportFile = new File(".");
+        String dirr = "";
+
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from pasien";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            dirr = reportFile.getCanonicalPath() + "/src/sisteminformasipuskesmas/data/";
+            JasperDesign design = JRXmlLoader.load(dirr + "LaporanPasien.jrxml");
+            JasperReport report = JasperCompileManager.compileReport(design);
+            ResultSet rs = pst.executeQuery(sql);
+            JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
+            JasperPrint jp = JasperFillManager.fillReport(report, new HashMap(), rsDataSource);
+            JasperViewer.viewReport(jp, false);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPrintDataActionPerformed
+
+    private void pnlRekamMedisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseClicked
+        // TODO add your handling code here:
+        RekamMedisFormPetugas rmfp = new RekamMedisFormPetugas();
+        rmfp.setVisible(true);
+        rmfp.pack();
+        rmfp.setLocationRelativeTo(null);
+        rmfp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlRekamMedisMouseClicked
+
+    private void pnlRekamMedisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseEntered
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlRekamMedisMouseEntered
+
+    private void pnlRekamMedisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseExited
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlRekamMedisMouseExited
+
+    public boolean checkNomor(String nomorpendaftaran){
+        boolean id_exist = false;
+       
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from `pasien` where `nomorpendaftaran` = ?";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, nomorpendaftaran);
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                id_exist = true;
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PasienFormAdmin.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return id_exist;
+    }
+    
+    public void clear_form(){
+        txtNomorPendaftaran.setText("");
+        txtNamaPasien.setText("");
+        txtTempatLahir.setText("");
+        dcTanggalLahir.setDate(null);
+        txtUmur.setText("");
+        rbtgJenisKelamin.clearSelection();
+        txtAlamat.setText("");
+        txtNoHP.setText("");
+        txtNomorPendaftaran.requestFocus();
+    }
+    
+    public void load_data(){
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            Statement st = con.createStatement();
+            
+            String sql = "select * from pasien";
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                Object[] o = new Object[8];
+                o [0] = rs.getString("nomorpendaftaran");
+                o [1] = rs.getString("nama_pasien");
+                o [2] = rs.getString("tempatlahir_pasien");
+                o [3] = rs.getString("tanggallahir_pasien");
+                o [2] = rs.getString("umur_pasien");
+                o [5] = rs.getString("jenis_kelamin");
+                o [6] = rs.getString("alamat");
+                o [7] = rs.getString("no_hp");
+                
+                model.addRow(o);
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan", "Error", 2);
+        }
+    }
+    
+    public void tabel_data(){
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("Nomor Pendaftaran");
+        tabel.addColumn("Nama Pasien");
+        tabel.addColumn("Tempat Lahir");
+        tabel.addColumn("Tanggal Lahir");
+        tabel.addColumn("Umur Pasien");
+        tabel.addColumn("Jenis Kelamin");
+        tabel.addColumn("Alamat");
+        tabel.addColumn("No HP");
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from pasien";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while(rs.next()){
+                tabel.addRow(new Object[]{
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8)});
+            }
+            tblData.setModel(tabel);
+        } catch (Exception e) {
+        }
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +1276,62 @@ public class PasienFormPetugas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnPrintData;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnUbah;
+    private com.toedter.calendar.JDateChooser dcTanggalLahir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblMinimize;
+    private java.awt.Panel panel1;
+    private javax.swing.JPanel pnlBeranda;
+    private javax.swing.JPanel pnlDokter;
+    private javax.swing.JPanel pnlFarmasi;
+    private javax.swing.JPanel pnlKeluar;
+    private javax.swing.JPanel pnlPasien;
+    private javax.swing.JPanel pnlPetugas;
+    private javax.swing.JPanel pnlRekamMedis;
+    private javax.swing.JRadioButton rbtLakiLaki;
+    private javax.swing.JRadioButton rbtPerempuan;
+    private javax.swing.ButtonGroup rbtgJenisKelamin;
+    private javax.swing.JTable tblData;
+    private javax.swing.JTextArea txtAlamat;
+    private javax.swing.JTextField txtCariData;
+    private javax.swing.JTextField txtNamaPasien;
+    private javax.swing.JTextField txtNoHP;
+    private javax.swing.JTextField txtNomorPendaftaran;
+    private javax.swing.JTextField txtTempatLahir;
+    private javax.swing.JTextField txtUmur;
     // End of variables declaration//GEN-END:variables
 }

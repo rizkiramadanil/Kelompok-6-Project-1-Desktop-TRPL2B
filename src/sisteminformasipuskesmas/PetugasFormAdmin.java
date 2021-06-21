@@ -80,6 +80,9 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         pnlKeluar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        pnlRekamMedis = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblData = new javax.swing.JTable();
@@ -425,7 +428,51 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+
+        pnlRekamMedis.setBackground(new java.awt.Color(54, 70, 78));
+        pnlRekamMedis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlRekamMedis.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlRekamMedis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseExited(evt);
+            }
+        });
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-rekammedis.png"))); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Rekam Medis");
+
+        javax.swing.GroupLayout pnlRekamMedisLayout = new javax.swing.GroupLayout(pnlRekamMedis);
+        pnlRekamMedis.setLayout(pnlRekamMedisLayout);
+        pnlRekamMedisLayout.setHorizontalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRekamMedisLayout.setVerticalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pnlRekamMedis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
 
@@ -452,7 +499,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Data Petugas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel19.setText("ID");
+        jLabel19.setText("ID Petugas");
 
         txtIDPetugas.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         txtIDPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -893,7 +940,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         }
         
         if(checkID(idpetugas)){
-            JOptionPane.showMessageDialog(null, "ID sudah ada", "Error", 2);
+            JOptionPane.showMessageDialog(null, "ID Petugas sudah ada", "Error", 2);
         }
         else if(idpetugas.trim().equals("") || namapetugas.trim().equals("") || password.trim().equals("")
                 || tempatlahir.trim().equals("") || tanggallahir.trim().equals("") || jeniskelamin.trim().equals("")
@@ -935,7 +982,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
         char idadmin = evt.getKeyChar();
         if(!(Character.isDigit(idadmin) || (idadmin==KeyEvent.VK_BACK_SPACE)) || (idadmin==KeyEvent.VK_DELETE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "ID harus berupa angka");
+            JOptionPane.showMessageDialog(null, "ID Petugas harus berupa angka");
         }
     }//GEN-LAST:event_txtIDPetugasKeyTyped
 
@@ -1043,7 +1090,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private void txtCariDataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariDataKeyTyped
         // TODO add your handling code here:
         DefaultTableModel tabel = new DefaultTableModel();
-        tabel.addColumn("ID");
+        tabel.addColumn("ID Petugas");
         tabel.addColumn("Nama Petugas");
         tabel.addColumn("Password");
         tabel.addColumn("Tempat Lahir");
@@ -1117,7 +1164,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             String sql = "select * from petugas_rm";
             java.sql.PreparedStatement pst = con.prepareStatement(sql);
             dirr = reportFile.getCanonicalPath() + "/src/sisteminformasipuskesmas/data/";
-            JasperDesign design = JRXmlLoader.load(dirr + "laporanpetugas.jrxml");
+            JasperDesign design = JRXmlLoader.load(dirr + "LaporanPetugas.jrxml");
             JasperReport report = JasperCompileManager.compileReport(design);
             ResultSet rs = pst.executeQuery(sql);
             JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
@@ -1127,6 +1174,26 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPrintDataActionPerformed
+
+    private void pnlRekamMedisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseClicked
+        // TODO add your handling code here:
+        RekamMedisFormAdmin rmfa = new RekamMedisFormAdmin();
+        rmfa.setVisible(true);
+        rmfa.pack();
+        rmfa.setLocationRelativeTo(null);
+        rmfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlRekamMedisMouseClicked
+
+    private void pnlRekamMedisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseEntered
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlRekamMedisMouseEntered
+
+    private void pnlRekamMedisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseExited
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlRekamMedisMouseExited
     
     public boolean checkID(String idpetugas){
         boolean id_exist = false;
@@ -1145,25 +1212,6 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             Logger.getLogger(PetugasFormAdmin.class.getName()).log(Level.SEVERE, null, e);
         }
         return id_exist;
-    }
-    
-    public boolean checknama(String namapetugas){
-        boolean nama_exist = false;
-       
-        try {
-            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
-            String sql = "select * from `petugas_rm` where `nama_petugas` = ?";
-            java.sql.PreparedStatement pst = con.prepareStatement(sql);
-            pst.setString(1, namapetugas);
-            ResultSet rs = pst.executeQuery();
-            
-            if(rs.next()){
-                nama_exist = true;
-            }
-        } catch (Exception e) {
-            Logger.getLogger(PetugasFormAdmin.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return nama_exist;
     }
     
     public void clear_form(){
@@ -1190,7 +1238,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
             
             while(rs.next()){
-                Object[] o = new Object[6];
+                Object[] o = new Object[8];
                 o [0] = rs.getString("id_petugas");
                 o [1] = rs.getString("nama_petugas");
                 o [2] = rs.getString("passsword");
@@ -1211,7 +1259,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     
     public void tabel_data(){
         DefaultTableModel tabel = new DefaultTableModel();
-        tabel.addColumn("ID");
+        tabel.addColumn("ID Petugas");
         tabel.addColumn("Nama Petugas");
         tabel.addColumn("Password");
         tabel.addColumn("Tempat Lahir");
@@ -1286,6 +1334,8 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -1320,6 +1370,7 @@ public class PetugasFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlKeluar;
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPetugas;
+    private javax.swing.JPanel pnlRekamMedis;
     private javax.swing.JRadioButton rbtLakiLaki;
     private javax.swing.JRadioButton rbtPerempuan;
     private javax.swing.ButtonGroup rbtgJenisKelamin;

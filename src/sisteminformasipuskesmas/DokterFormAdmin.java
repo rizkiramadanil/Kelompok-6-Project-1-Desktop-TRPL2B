@@ -6,9 +6,27 @@
 package sisteminformasipuskesmas;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author Asus
@@ -18,9 +36,13 @@ public class DokterFormAdmin extends javax.swing.JFrame {
     /**
      * Creates new form DokterFormAdmin
      */
+    private DefaultTableModel model;
+    
     public DokterFormAdmin() {
         initComponents();
         this.setLocationRelativeTo(null);
+        tabel_data();
+        txtIDDokter.requestFocus();
     }
 
     /**
@@ -55,9 +77,34 @@ public class DokterFormAdmin extends javax.swing.JFrame {
         pnlKeluar = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        pnlRekamMedis = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblData = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        txtIDDokter = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txtNamaDokter = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txtJenisTenaga = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAlamat = new javax.swing.JTextArea();
+        jLabel24 = new javax.swing.JLabel();
+        txtJadwalPraktek = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        btnSimpan = new javax.swing.JButton();
+        btnUbah = new javax.swing.JButton();
+        btnHapus = new javax.swing.JButton();
+        btnBatal = new javax.swing.JButton();
+        txtCariData = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        btnPrintData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -273,7 +320,7 @@ public class DokterFormAdmin extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlPetugasLayout.setVerticalGroup(
             pnlPetugasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,22 +419,54 @@ public class DokterFormAdmin extends javax.swing.JFrame {
             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
+        jPanel1.add(pnlKeluar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 240, 80));
+
+        pnlRekamMedis.setBackground(new java.awt.Color(54, 70, 78));
+        pnlRekamMedis.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        pnlRekamMedis.setPreferredSize(new java.awt.Dimension(240, 80));
+        pnlRekamMedis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlRekamMedisMouseExited(evt);
+            }
+        });
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icon-rekammedis.png"))); // NOI18N
+
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Rekam Medis");
+        jLabel14.setToolTipText("");
+
+        javax.swing.GroupLayout pnlRekamMedisLayout = new javax.swing.GroupLayout(pnlRekamMedis);
+        pnlRekamMedis.setLayout(pnlRekamMedisLayout);
+        pnlRekamMedisLayout.setHorizontalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlRekamMedisLayout.setVerticalGroup(
+            pnlRekamMedisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+            .addGroup(pnlRekamMedisLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel14)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pnlRekamMedis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1440, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
-        );
-
-        panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo-SIP_Menu.png"))); // NOI18N
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 70));
@@ -396,6 +475,233 @@ public class DokterFormAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(27, 117, 188));
         jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
         panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 62, -1, -1));
+
+        tblData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tblData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID Dokter", "Nama Dokter", "Jenis Tenaga", "Jadwal Praktek", "Alamat"
+            }
+        ));
+        tblData.setRowHeight(20);
+        tblData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDataMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblData);
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Data Dokter", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel19.setText("ID Dokter");
+
+        txtIDDokter.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtIDDokter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIDDokterKeyTyped(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel20.setText("Nama Dokter");
+
+        txtNamaDokter.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel21.setText("Jenis Tenaga");
+
+        txtJenisTenaga.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel22.setText("Alamat");
+
+        txtAlamat.setColumns(20);
+        txtAlamat.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtAlamat.setRows(5);
+        jScrollPane2.setViewportView(txtAlamat);
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel24.setText("Jadwal Praktek");
+
+        txtJadwalPraktek.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtJadwalPraktek, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtJenisTenaga)
+                            .addComponent(txtIDDokter, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNamaDokter, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel24, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIDDokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNamaDokter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtJenisTenaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtJadwalPraktek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Navigasi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+
+        btnSimpan.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnSimpan.setText("Simpan");
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSimpanActionPerformed(evt);
+            }
+        });
+
+        btnUbah.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnUbah.setText("Ubah");
+        btnUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUbahActionPerformed(evt);
+            }
+        });
+
+        btnHapus.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnHapus.setText("Hapus");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        btnBatal.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        btnBatal.setText("Batal");
+        btnBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBatalActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(btnHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSimpan)
+                    .addComponent(btnUbah)
+                    .addComponent(btnHapus)
+                    .addComponent(btnBatal))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        txtCariData.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+        txtCariData.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCariDataKeyTyped(evt);
+            }
+        });
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabel25.setText("Cari Data");
+
+        btnPrintData.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnPrintData.setText("Print Data");
+        btnPrintData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintDataActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 956, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnPrintData)
+                .addGap(234, 234, 234)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(btnPrintData))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -553,6 +859,300 @@ public class DokterFormAdmin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblCloseMouseClicked
 
+    private void tblDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDataMouseClicked
+        // TODO add your handling code here:
+        int tabel = tblData.getSelectedRow();
+        txtIDDokter.setText(tblData.getValueAt(tabel, 0).toString());
+        txtNamaDokter.setText(tblData.getValueAt(tabel, 1).toString());
+        txtJenisTenaga.setText(tblData.getValueAt(tabel, 2).toString());
+        txtJadwalPraktek.setText(tblData.getValueAt(tabel, 3).toString());
+        txtAlamat.setText(tblData.getValueAt(tabel, 4).toString());
+    }//GEN-LAST:event_tblDataMouseClicked
+
+    private void txtIDDokterKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDDokterKeyTyped
+        // TODO add your handling code here:
+        char iddokter = evt.getKeyChar();
+        if(!(Character.isDigit(iddokter) || (iddokter==KeyEvent.VK_BACK_SPACE)) || (iddokter==KeyEvent.VK_DELETE)) {
+            evt.consume();
+            JOptionPane.showMessageDialog(null, "ID Dokter harus berupa angka");
+        }
+    }//GEN-LAST:event_txtIDDokterKeyTyped
+
+    private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
+        // TODO add your handling code here:
+        String iddokter = txtIDDokter.getText();
+        String namadokter = txtNamaDokter.getText();
+        String jenistenaga = txtJenisTenaga.getText();
+        String jadwalpraktek = txtJadwalPraktek.getText();
+        String alamat = txtAlamat.getText();
+
+        if(checkID(iddokter)){
+            JOptionPane.showMessageDialog(null, "ID Dokter sudah ada", "Error", 2);
+        }
+        else if(iddokter.trim().equals("") || namadokter.trim().equals("")|| jenistenaga.trim().equals("")
+            || jadwalpraktek.trim().equals("") || alamat.trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Terdapat Data yang Kosong", "Error", 2);
+        } else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin simpan data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION)
+            {
+                try {
+                    String sql = "insert into dokter values('"
+                    +txtIDDokter.getText()+"','"
+                    +txtNamaDokter.getText()+"','"
+                    +txtJenisTenaga.getText()+"','"
+                    +txtJadwalPraktek.getText()+"','"
+                    +txtAlamat.getText()+"')";
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.execute();
+                    JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+                    tabel_data();
+                    clear_form();
+                    txtIDDokter.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal disimpan", "Error", 2);
+                    clear_form();
+                    txtIDDokter.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnSimpanActionPerformed
+
+    private void btnUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUbahActionPerformed
+        // TODO add your handling code here:
+        String iddokter = txtIDDokter.getText();
+        String namadokter = txtNamaDokter.getText();
+        String jenistenaga = txtJenisTenaga.getText();
+        String jadwalpraktek = txtJadwalPraktek.getText();
+        String alamat = txtAlamat.getText();
+
+        if(iddokter.trim().equals("") || namadokter.trim().equals("")|| jenistenaga.trim().equals("")
+            || jadwalpraktek.trim().equals("") || alamat.trim().equals(""))
+        {
+            JOptionPane.showMessageDialog(null, "Pilih data yang ingin diubah", "Error", 2);
+        }
+        else if(!checkID(iddokter)){
+            JOptionPane.showMessageDialog(null, "Data yang akan diubah tidak ditemukan", "Error", 2);
+        } else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin ubah data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION)
+            {
+                try {
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    String sql = "update dokter set id_dokter='" + txtIDDokter.getText()+
+                    "', nama_dokter='" + txtNamaDokter.getText()+
+                    "', jenis_tenaga='" + txtJenisTenaga.getText()+
+                    "', jadwal_praktek='" + txtJadwalPraktek.getText()+
+                    "', alamat='" + txtAlamat.getText()+
+                    "' where id_dokter='" + txtIDDokter.getText()+"'";
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Data berhasil diubah");
+                    tabel_data();
+                    clear_form();
+                    txtIDDokter.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal diubah", "Error", 2);
+                    clear_form();
+                    txtIDDokter.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnUbahActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        // TODO add your handling code here:
+        String iddokter = txtIDDokter.getText();
+
+        if(iddokter.trim().equals("")){
+            JOptionPane.showMessageDialog(null, "Masukkan ID data yang akan dihapus", "Error", 2);
+        }
+        else if(!checkID(iddokter)){
+            JOptionPane.showMessageDialog(null, "Data yang akan dihapus tidak ditemukan", "Error", 2);
+        } else{
+            int answer = JOptionPane.showOptionDialog(this, "Yakin hapus data?", "Message", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+            if(answer==JOptionPane.YES_OPTION){
+                try {
+                    java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+                    String sql = "delete from dokter where id_dokter='"+ txtIDDokter.getText()+"' ";
+                    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+                    pst.executeUpdate();
+
+                    JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
+                    tabel_data();
+                    clear_form();
+                    txtIDDokter.requestFocus();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Data gagal dihapus", "Error", 2);
+                    clear_form();
+                    txtIDDokter.requestFocus();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
+        // TODO add your handling code here:
+        clear_form();
+    }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void txtCariDataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariDataKeyTyped
+        // TODO add your handling code here:
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("ID Dokter");
+        tabel.addColumn("Nama Dokter");
+        tabel.addColumn("Jenis Tenaga");
+        tabel.addColumn("Jadwal Praktek");
+        tabel.addColumn("Alamat");
+
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from dokter where id_dokter like'%" + txtCariData.getText()+ "%' or nama_dokter like'%" + txtCariData.getText()+ "%'";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while(rs.next()){
+                tabel.addRow(new Object[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5)});
+        }
+        tblData.setModel(tabel);
+        load_data();
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_txtCariDataKeyTyped
+
+    private void btnPrintDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintDataActionPerformed
+        // TODO add your handling code here:
+        File reportFile = new File(".");
+        String dirr = "";
+
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from dokter";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            dirr = reportFile.getCanonicalPath() + "/src/sisteminformasipuskesmas/data/";
+            JasperDesign design = JRXmlLoader.load(dirr + "LaporanDokter.jrxml");
+            JasperReport report = JasperCompileManager.compileReport(design);
+            ResultSet rs = pst.executeQuery(sql);
+            JRResultSetDataSource rsDataSource = new JRResultSetDataSource(rs);
+            JasperPrint jp = JasperFillManager.fillReport(report, new HashMap(), rsDataSource);
+            JasperViewer.viewReport(jp, false);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPrintDataActionPerformed
+
+    private void pnlRekamMedisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseClicked
+        // TODO add your handling code here:
+        RekamMedisFormAdmin rmfa = new RekamMedisFormAdmin();
+        rmfa.setVisible(true);
+        rmfa.pack();
+        rmfa.setLocationRelativeTo(null);
+        rmfa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_pnlRekamMedisMouseClicked
+
+    private void pnlRekamMedisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseEntered
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(47,54,64));
+    }//GEN-LAST:event_pnlRekamMedisMouseEntered
+
+    private void pnlRekamMedisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlRekamMedisMouseExited
+        // TODO add your handling code here:
+        pnlRekamMedis.setBackground(new Color(54,70,78));
+    }//GEN-LAST:event_pnlRekamMedisMouseExited
+
+    public boolean checkID(String iddokter){
+        boolean id_exist = false;
+       
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from `dokter` where `id_dokter` = ?";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            pst.setString(1, iddokter);
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next()){
+                id_exist = true;
+            }
+        } catch (Exception e) {
+            Logger.getLogger(DokterFormAdmin.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return id_exist;
+    }
+    
+    public void clear_form(){
+        txtIDDokter.setText("");
+        txtNamaDokter.setText("");
+        txtJenisTenaga.setText("");
+        txtJadwalPraktek.setText("");
+        txtAlamat.setText("");
+        
+        txtIDDokter.requestFocus();
+    }
+    
+    public void load_data(){
+        model.getDataVector().removeAllElements();
+        model.fireTableDataChanged();
+        
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            Statement st = con.createStatement();
+            
+            String sql = "select * from dokter";
+            ResultSet rs = st.executeQuery(sql);
+            
+            while(rs.next()){
+                Object[] o = new Object[5];
+                o [0] = rs.getString("id_dokter");
+                o [1] = rs.getString("nama_dokter");
+                o [2] = rs.getString("jenis_tenaga");
+                o [3] = rs.getString("jadwal_praktek");
+                o [4] = rs.getString("alamat");
+                
+                model.addRow(o);
+            }
+            rs.close();
+            st.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan", "Error", 2);
+        }
+    }
+    
+    public void tabel_data(){
+        DefaultTableModel tabel = new DefaultTableModel();
+        tabel.addColumn("ID Dokter");
+        tabel.addColumn("Nama Dokter");
+        tabel.addColumn("Jenis Tenaga");
+        tabel.addColumn("Jadwal Praktek");
+        tabel.addColumn("Alamat");
+        
+        try {
+            java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
+            String sql = "select * from dokter";
+            java.sql.PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while(rs.next()){
+                tabel.addRow(new Object[]{
+                rs.getString(1),
+                rs.getString(2),
+                rs.getString(3),
+                rs.getString(4),
+                rs.getString(5)});
+            }
+            tblData.setModel(tabel);
+        } catch (Exception e) {
+        }
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -589,13 +1189,26 @@ public class DokterFormAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBatal;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnPrintData;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton btnUbah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -606,6 +1219,10 @@ public class DokterFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblMinimize;
     private java.awt.Panel panel1;
@@ -615,5 +1232,13 @@ public class DokterFormAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel pnlKeluar;
     private javax.swing.JPanel pnlPasien;
     private javax.swing.JPanel pnlPetugas;
+    private javax.swing.JPanel pnlRekamMedis;
+    private javax.swing.JTable tblData;
+    private javax.swing.JTextArea txtAlamat;
+    private javax.swing.JTextField txtCariData;
+    private javax.swing.JTextField txtIDDokter;
+    private javax.swing.JTextField txtJadwalPraktek;
+    private javax.swing.JTextField txtJenisTenaga;
+    private javax.swing.JTextField txtNamaDokter;
     // End of variables declaration//GEN-END:variables
 }

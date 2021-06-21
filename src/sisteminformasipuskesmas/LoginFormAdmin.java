@@ -133,7 +133,7 @@ public class LoginFormAdmin extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabel3.setText("ID");
+        jLabel3.setText("ID Admin");
 
         txtIDAdmin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtIDAdmin.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -288,7 +288,7 @@ public class LoginFormAdmin extends javax.swing.JFrame {
         char idadmin = evt.getKeyChar();
         if(!(Character.isDigit(idadmin) || (idadmin==KeyEvent.VK_BACK_SPACE)) || (idadmin==KeyEvent.VK_DELETE)) {
             evt.consume();
-            JOptionPane.showMessageDialog(null, "ID harus berupa angka");
+            JOptionPane.showMessageDialog(null, "ID Admin harus berupa angka");
         }
     }//GEN-LAST:event_txtIDAdminKeyTyped
 

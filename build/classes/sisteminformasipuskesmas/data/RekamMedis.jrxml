@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.2100000000000024"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="215"/>
+	<parameter name="ID Rekam Medis" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT * FROM rekam_medis where id_rekammedis = $P{ID Rekam Medis}]]>
+	</queryString>
+	<field name="id_rekammedis" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal_berobat" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomorpendaftaran" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_pasien" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_dokter" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="keluhan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnosa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tindakan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama_obat" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="70" height="68"/>
+				<imageExpression><![CDATA["D:\\#Project 1 (Desktop)#\\Code\\sisteminformasipuskesmas\\src\\image\\logo-SIP_Menu.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="485" y="0" width="70" height="70"/>
+				<imageExpression><![CDATA["D:\\#Project 1 (Desktop)#\\Code\\sisteminformasipuskesmas\\src\\image\\logo_puskesmas.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="217" y="48" width="113" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<text><![CDATA[REKAM MEDIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="16" width="331" height="32"/>
+				<textElement>
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SISTEM INFORMASI PUSKESMAS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="76" width="555" height="1"/>
+			</line>
+		</band>
+	</title>
+	<detail>
+		<band height="559" splitType="Stretch">
+			<staticText>
+				<reportElement x="216" y="46" width="87" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nama Dokter      :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="96" width="165" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Keluhan]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="303" y="46" width="90" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_dokter}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="35" y="116" width="152" height="293"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{keluhan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="216" y="14" width="87" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[No Pendaftaran  : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="46" width="87" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nama Pasien        : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="303" y="14" width="90" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nomorpendaftaran}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="46" width="100" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_pasien}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="14" width="100" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_rekammedis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="14" width="87" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ID Rekam Medis  : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="14" width="88" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Tanggal Berobat  :]]></text>
+			</staticText>
+			<textField pattern="yyyy-MM-dd">
+				<reportElement x="485" y="14" width="53" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal_berobat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="198" y="96" width="170" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Diagnosa]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="198" y="116" width="170" height="293"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{diagnosa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="378" y="96" width="160" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Tindakan]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="378" y="116" width="150" height="293"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tindakan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="420" width="77" height="20"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Nama Obat]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="22" y="440" width="514" height="88"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_obat}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="24" y="116" width="514" height="1"/>
+			</line>
+			<line>
+				<reportElement x="22" y="95" width="516" height="1"/>
+			</line>
+			<line>
+				<reportElement x="22" y="96" width="1" height="313"/>
+			</line>
+			<line>
+				<reportElement x="538" y="96" width="1" height="313"/>
+			</line>
+			<line>
+				<reportElement x="187" y="96" width="1" height="313"/>
+			</line>
+			<line>
+				<reportElement x="368" y="96" width="1" height="313"/>
+			</line>
+			<line>
+				<reportElement x="22" y="409" width="517" height="1"/>
+			</line>
+			<line>
+				<reportElement x="22" y="440" width="514" height="1"/>
+			</line>
+			<line>
+				<reportElement x="22" y="441" width="1" height="87"/>
+			</line>
+			<line>
+				<reportElement x="536" y="440" width="1" height="89"/>
+			</line>
+			<line>
+				<reportElement x="22" y="528" width="514" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="51" splitType="Stretch"/>
+	</summary>
+</jasperReport>
