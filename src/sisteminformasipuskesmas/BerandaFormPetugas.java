@@ -433,7 +433,7 @@ public class BerandaFormPetugas extends javax.swing.JFrame {
 
         lblInfoAplikasi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblInfoAplikasi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblInfoAplikasi.setText("<html>Sistem Informasi Puskesmas atau SIP merupakan sebuah aplikasi desktop yang digunakan oleh petugas puskesmas sehingga akan mempermudah dan mempercepat pekerjaannya dalam mengolah data-data puskesmas.<html>");
+        lblInfoAplikasi.setText("<html>\n<p>Sistem Informasi Puskesmas atau SIP merupakan sebuah aplikasi desktop yang digunakan oleh petugas puskesmas sehingga akan mempermudah dan mempercepat pekerjaannya dalam mengolah data-data puskesmas.</p>\n<br>\nManfaat Sistem Informasi Puskesmas\n<ol>\n<li>Mempermudah petugas  untuk mendata pasien yang ada di puskesmas.</li>\n<li>Memudahkan dalam pembuatan laporan-laporan seperti rekam medis, obat-obatan dan sebagainya.</li>\n<li>Mengurangi kesalahan saat proses penginputan data dan lebih efektif dan efesien.</li>\n<li>Menangani masalah pengolahan data pasien di puskesmas.</li>\n<li>Mempermudah Pengolahan Data data di puskesmas.</li>\n</ol>\n</html>");
         lblInfoAplikasi.setToolTipText("");
         lblInfoAplikasi.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
