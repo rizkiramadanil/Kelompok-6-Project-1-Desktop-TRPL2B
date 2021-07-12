@@ -9,6 +9,10 @@ import java.awt.Color;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -37,6 +41,7 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
     public PetugasFormPetugas() {
         initComponents();
         this.setLocationRelativeTo(null);
+        date_time();
         tabel_data();
     }
 
@@ -75,6 +80,9 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         pnlRekamMedis = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lblTanggal = new javax.swing.JLabel();
+        lblJam = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         txtCariData = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
@@ -83,6 +91,13 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         btnPrintData = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -443,7 +458,24 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
 
         jPanel1.add(pnlRekamMedis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
+        jPanel5.setBackground(new java.awt.Color(47, 54, 64));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTanggal.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 20)); // NOI18N
+        lblTanggal.setForeground(new java.awt.Color(255, 255, 255));
+        lblTanggal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel5.add(lblTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 220, 30));
+
+        lblJam.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 20)); // NOI18N
+        lblJam.setForeground(new java.awt.Color(255, 255, 255));
+        lblJam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel5.add(lblJam, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 56, -1, 30));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 720, 240, 100));
+
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(47, 54, 64)));
 
         txtCariData.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
         txtCariData.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -490,7 +522,7 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCariData, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1416, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1406, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -502,19 +534,112 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
                     .addComponent(jLabel25)
                     .addComponent(btnPrintData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 733, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
+        panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 817));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo-SIP_Menu.png"))); // NOI18N
-        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 70));
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 50, -1, 70));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 44)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 117, 188));
+        jLabel2.setFont(new java.awt.Font("Calibri", 1, 46)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(10, 61, 98));
         jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
-        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 62, -1, -1));
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 60, -1, -1));
+
+        jPanel6.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 120));
+
+        jPanel8.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1660, 20, -1, -1));
+
+        jPanel7.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 90, 400, 20));
+
+        jPanel9.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 50, 400, -1));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo_puskesmas.png"))); // NOI18N
+        panel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 50, -1, -1));
+
+        jPanel10.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 400, -1));
+
+        jPanel11.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 400, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -745,6 +870,27 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
         pnlRekamMedis.setBackground(new Color(54,70,78));
     }//GEN-LAST:event_pnlRekamMedisMouseExited
 
+    public void date_time(){
+        Thread t = new Thread(){
+            public void run(){
+                for(;;){
+                    Date date = new Date();
+                    Calendar cal = new GregorianCalendar();
+                    String dayname_now = new SimpleDateFormat("EEEE").format(date);
+                    String month_now = new SimpleDateFormat("MMM").format(date);
+                    int day_now = cal.get(Calendar.DAY_OF_MONTH);
+                    int year_now = cal.get(Calendar.YEAR);
+                    lblTanggal.setText(dayname_now+", "+day_now+" "+(month_now)+" "+year_now);
+
+                    int hour_now = cal.get(Calendar.HOUR_OF_DAY);
+                    int minute_now = cal.get(Calendar.MINUTE);
+                    lblJam.setText(hour_now+":"+minute_now);
+                }
+            }
+        };
+        t.start();
+    }
+    
     public void load_data(){
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
@@ -847,6 +993,7 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
@@ -859,11 +1006,20 @@ public class PetugasFormPetugas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblJam;
     private javax.swing.JLabel lblMinimize;
+    private javax.swing.JLabel lblTanggal;
     private java.awt.Panel panel1;
     private javax.swing.JPanel pnlBeranda;
     private javax.swing.JPanel pnlDokter;

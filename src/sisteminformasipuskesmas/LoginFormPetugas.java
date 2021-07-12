@@ -6,7 +6,6 @@
 package sisteminformasipuskesmas;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,11 +46,11 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        txtIDPetugas = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtNamaPetugas = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         pwdPassword = new javax.swing.JPasswordField();
+        txtIDPetugas = new javax.swing.JTextField();
         lblBack = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,7 +105,7 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(731, 86, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 117, 188));
+        jLabel2.setForeground(new java.awt.Color(10, 61, 98));
         jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
         panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 294, -1, -1));
 
@@ -135,13 +134,6 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel3.setText("ID Petugas");
 
-        txtIDPetugas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtIDPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIDPetugasKeyTyped(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel4.setText("Nama Petugas");
 
@@ -151,6 +143,8 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         jLabel5.setText("Password");
 
         pwdPassword.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        txtIDPetugas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,11 +156,11 @@ public class LoginFormPetugas extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
                     .addComponent(txtNamaPetugas)
-                    .addComponent(txtIDPetugas, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
-                    .addComponent(pwdPassword))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pwdPassword)
+                    .addComponent(txtIDPetugas))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +169,7 @@ public class LoginFormPetugas extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIDPetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNamaPetugas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +244,7 @@ public class LoginFormPetugas extends javax.swing.JFrame {
         String namapetugas = txtNamaPetugas.getText();
         String password = String.valueOf(pwdPassword.getPassword());
 
-        String query = "select * from `petugas_rm` where `id_petugas` = ? and `nama_petugas` = ? and `password` = ?";
+        String query = "select * from petugas_rm where id_petugas = ? and nama_petugas = ? and password = ?";
 
         if(idpetugas.trim().equals("") || namapetugas.trim().equals("") || password.trim().equals(""))
         {
@@ -282,15 +276,6 @@ public class LoginFormPetugas extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed
-
-    private void txtIDPetugasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDPetugasKeyTyped
-        // TODO add your handling code here:
-        char idpetugas = evt.getKeyChar();
-        if(!(Character.isDigit(idpetugas) || (idpetugas==KeyEvent.VK_BACK_SPACE)) || (idpetugas==KeyEvent.VK_DELETE)) {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "ID Petugas harus berupa angka");
-        }
-    }//GEN-LAST:event_txtIDPetugasKeyTyped
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
         // TODO add your handling code here:

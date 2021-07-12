@@ -6,19 +6,19 @@
 package sisteminformasipuskesmas;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -42,6 +42,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
     public RekamMedisFormPetugas() {
         initComponents();
         this.setLocationRelativeTo(null);
+        date_time();
         tabel_data_rekammedis();
         tabel_data_pasien();
         tabel_data_dokter();
@@ -84,12 +85,14 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         pnlRekamMedis = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        lblTanggal = new javax.swing.JLabel();
+        lblJam = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDataRekamMedis = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        txtIDRekamMedis = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -110,6 +113,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         jLabel35 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         txtNamaObat = new javax.swing.JTextArea();
+        txtIDRekamMedis = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         btnSimpan = new javax.swing.JButton();
         btnUbah = new javax.swing.JButton();
@@ -136,6 +140,13 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         txtPrint = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -496,7 +507,24 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
 
         jPanel1.add(pnlRekamMedis, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 240, 80));
 
+        jPanel6.setBackground(new java.awt.Color(47, 54, 64));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTanggal.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 20)); // NOI18N
+        lblTanggal.setForeground(new java.awt.Color(255, 255, 255));
+        lblTanggal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(lblTanggal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 220, 30));
+
+        lblJam.setFont(new java.awt.Font("Microsoft Sans Serif", 1, 20)); // NOI18N
+        lblJam.setForeground(new java.awt.Color(255, 255, 255));
+        lblJam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(lblJam, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 56, -1, 30));
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 720, 240, 100));
+
         panel1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 128, 240, 820));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(47, 54, 64)));
 
         tblDataRekamMedis.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tblDataRekamMedis.setModel(new javax.swing.table.DefaultTableModel(
@@ -522,13 +550,6 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel19.setText("ID Rekam Medis");
-
-        txtIDRekamMedis.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
-        txtIDRekamMedis.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtIDRekamMedisKeyTyped(evt);
-            }
-        });
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel20.setText("Tanggal Berobat");
@@ -587,6 +608,8 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         txtNamaObat.setRows(5);
         jScrollPane8.setViewportView(txtNamaObat);
 
+        txtIDRekamMedis.setFont(new java.awt.Font("Tahoma", 0, 17)); // NOI18N
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -609,7 +632,6 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dcTanggalBerobat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtIDRekamMedis, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel33)
@@ -623,7 +645,10 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel21)
                                     .addComponent(txtNamaPasien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(7, 7, 7))))
+                        .addGap(7, 7, 7))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(txtIDRekamMedis)
+                        .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -631,8 +656,8 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtIDRekamMedis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtIDRekamMedis, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dcTanggalBerobat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -698,13 +723,13 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(51, 51, 51)
                 .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(41, 41, 41)
                 .addComponent(btnUbah, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGap(40, 40, 40)
                 .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -840,45 +865,52 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(175, 175, 175)
-                                .addComponent(jLabel29)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCariDataDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel15)
-                            .addComponent(jScrollPane5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtCariDataObat, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane7)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel28)
                             .addComponent(jLabel23))
-                        .addGap(0, 757, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnPrintData)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel29)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCariDataDokter, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCariDataRekamMedis, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel30)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtCariDataObat, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(5, 5, 5))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCariDataPasien, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCariDataPasien, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnPrintData)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel25)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCariDataRekamMedis, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -891,16 +923,15 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnPrintData)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtPrint)
+                                .addComponent(txtPrint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtCariDataRekamMedis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel25)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -925,20 +956,113 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
                             .addComponent(jLabel30))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(30, 30, 30))))
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                .addContainerGap())
         );
 
-        panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 820));
+        panel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 128, 1440, 817));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo-SIP_Menu.png"))); // NOI18N
-        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 70));
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(446, 50, -1, 70));
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 1, 44)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 117, 188));
+        jLabel2.setFont(new java.awt.Font("Calibri", 1, 46)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(10, 61, 98));
         jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
-        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 62, -1, -1));
+        panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(531, 60, -1, -1));
+
+        jPanel7.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, -1, 120));
+
+        jPanel8.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1660, 20, -1, -1));
+
+        jPanel9.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 90, 400, 20));
+
+        jPanel10.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 50, 400, -1));
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo_puskesmas.png"))); // NOI18N
+        panel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 50, -1, -1));
+
+        jPanel11.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 400, -1));
+
+        jPanel12.setBackground(new java.awt.Color(10, 61, 98));
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 20, Short.MAX_VALUE)
+        );
+
+        panel1.add(jPanel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 400, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1120,6 +1244,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         // TODO add your handling code here:
         int tabel = tblDataRekamMedis.getSelectedRow();
         txtIDRekamMedis.setText(tblDataRekamMedis.getValueAt(tabel, 0).toString());
+        txtPrint.setText(tblDataRekamMedis.getValueAt(tabel, 0).toString());
         try {
             int tabeldate = tblDataRekamMedis.getSelectedRow();
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)tblDataRekamMedis.getValueAt(tabeldate, 1));
@@ -1135,15 +1260,6 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         txtTindakan.setText(tblDataRekamMedis.getValueAt(tabel, 7).toString());
         txtNamaObat.setText(tblDataRekamMedis.getValueAt(tabel, 8).toString());
     }//GEN-LAST:event_tblDataRekamMedisMouseClicked
-
-    private void txtIDRekamMedisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDRekamMedisKeyTyped
-        // TODO add your handling code here:
-        char idrekammedis = evt.getKeyChar();
-        if(!(Character.isDigit(idrekammedis) || (idrekammedis==KeyEvent.VK_BACK_SPACE)) || (idrekammedis==KeyEvent.VK_DELETE)) {
-            evt.consume();
-            JOptionPane.showMessageDialog(null, "ID Rekam Medis harus berupa angka");
-        }
-    }//GEN-LAST:event_txtIDRekamMedisKeyTyped
 
     private void dcTanggalBerobatPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dcTanggalBerobatPropertyChange
         // TODO add your handling code here:
@@ -1258,6 +1374,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         // TODO add your handling code here:
         clear_form();
+        txtIDRekamMedis.requestFocus();
     }//GEN-LAST:event_btnBatalActionPerformed
 
     private void txtCariDataRekamMedisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariDataRekamMedisKeyTyped
@@ -1301,7 +1418,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         File reportFile = new File(".");
         String dirr = "";
         String print = txtPrint.getText();
-        
+
         if(print.trim().equals(""))
         {
             JOptionPane.showMessageDialog(null, "Masukkan ID Rekam Medis", "Error", 2);
@@ -1317,8 +1434,10 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
                 JasperReport report = JasperCompileManager.compileReport(design);
                 JasperPrint jp = JasperFillManager.fillReport(report, hash, con);
                 JasperViewer.viewReport(jp, false);
+                clear_form();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "\nPrint Gagal\n" + ex, "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                clear_form();
             }
         }
     }//GEN-LAST:event_btnPrintDataActionPerformed
@@ -1388,6 +1507,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
     private void tblDataPasienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDataPasienMouseClicked
         // TODO add your handling code here:\
         int tabel = tblDataPasien.getSelectedRow();
+        txtIDRekamMedis.setText(tblDataPasien.getValueAt(tabel, 0).toString());
         txtNomorPendaftaran.setText(tblDataPasien.getValueAt(tabel, 0).toString());
         txtNamaPasien.setText(tblDataPasien.getValueAt(tabel, 1).toString());
     }//GEN-LAST:event_tblDataPasienMouseClicked
@@ -1426,12 +1546,33 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCariDataPasienKeyTyped
 
+    public void date_time(){
+        Thread t = new Thread(){
+            public void run(){
+                for(;;){
+                    Date date = new Date();
+                    Calendar cal = new GregorianCalendar();
+                    String dayname_now = new SimpleDateFormat("EEEE").format(date);
+                    String month_now = new SimpleDateFormat("MMM").format(date);
+                    int day_now = cal.get(Calendar.DAY_OF_MONTH);
+                    int year_now = cal.get(Calendar.YEAR);
+                    lblTanggal.setText(dayname_now+", "+day_now+" "+(month_now)+" "+year_now);
+
+                    int hour_now = cal.get(Calendar.HOUR_OF_DAY);
+                    int minute_now = cal.get(Calendar.MINUTE);
+                    lblJam.setText(hour_now+":"+minute_now);
+                }
+            }
+        };
+        t.start();
+    }
+    
     public boolean checkID(String idpetugas){
         boolean id_exist = false;
        
         try {
             java.sql.Connection con = (java.sql.Connection)sisteminformasipuskesmas.connection.getConnection();
-            String sql = "select * from `rekam_medis` where `id_rekammedis` = ?";
+            String sql = "select * from rekam_medis where id_rekammedis = ?";
             java.sql.PreparedStatement pst = con.prepareStatement(sql);
             pst.setString(1, idpetugas);
             ResultSet rs = pst.executeQuery();
@@ -1455,7 +1596,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         txtDiagnosa.setText("");
         txtTindakan.setText("");
         txtNamaObat.setText("");
-        txtIDRekamMedis.requestFocus();
+        txtPrint.setText("");
     }
     
     public void load_data_rekammedis(){
@@ -1684,6 +1825,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -1709,6 +1851,13 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RekamMedisFormPetugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -1743,6 +1892,7 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -1759,10 +1909,17 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1772,7 +1929,9 @@ public class RekamMedisFormPetugas extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblJam;
     private javax.swing.JLabel lblMinimize;
+    private javax.swing.JLabel lblTanggal;
     private java.awt.Panel panel1;
     private javax.swing.JPanel pnlBeranda;
     private javax.swing.JPanel pnlDokter;

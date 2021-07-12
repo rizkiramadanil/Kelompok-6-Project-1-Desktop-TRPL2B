@@ -93,7 +93,7 @@ public class SplashScreen extends javax.swing.JFrame {
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 117, 188));
+        jLabel2.setForeground(new java.awt.Color(10, 61, 98));
         jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
         panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 530, -1, -1));
         panel1.add(pbLoadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 924, 1680, 20));

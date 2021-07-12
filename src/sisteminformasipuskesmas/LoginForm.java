@@ -94,7 +94,7 @@ public class LoginForm extends javax.swing.JFrame {
         panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(731, 86, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(27, 117, 188));
+        jLabel2.setForeground(new java.awt.Color(10, 61, 98));
         jLabel2.setText("SISTEM INFORMASI PUSKESMAS");
         panel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 294, -1, -1));
 

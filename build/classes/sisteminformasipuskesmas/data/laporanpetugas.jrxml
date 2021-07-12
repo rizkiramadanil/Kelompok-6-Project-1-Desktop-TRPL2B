@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="2.143588810000002"/>
-	<property name="ireport.x" value="45"/>
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
 	<style name="Detail" fontName="Arial" fontSize="12"/>
 	<queryString language="SQL">
-		<![CDATA[SELECT * FROM petugas_rm]]>
+		<![CDATA[select * from petugas_rm]]>
 	</queryString>
-	<field name="id_petugas" class="java.lang.Integer">
+	<field name="id_petugas" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="nama_petugas" class="java.lang.String">
@@ -35,29 +35,29 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="70" splitType="Stretch">
-			<image>
-				<reportElement x="0" y="0" width="70" height="68"/>
-				<imageExpression><![CDATA["D:\\#Project 1 (Desktop)#\\Code\\sisteminformasipuskesmas\\src\\image\\logo-SIP_Menu.png"]]></imageExpression>
-			</image>
-			<image>
-				<reportElement x="485" y="0" width="70" height="70"/>
-				<imageExpression><![CDATA["D:\\#Project 1 (Desktop)#\\Code\\sisteminformasipuskesmas\\src\\image\\logo_puskesmas.png"]]></imageExpression>
-			</image>
+		<band height="81" splitType="Stretch">
 			<staticText>
-				<reportElement x="113" y="18" width="331" height="32"/>
+				<reportElement x="114" y="17" width="331" height="32"/>
 				<textElement>
 					<font fontName="Times New Roman" size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SISTEM INFORMASI PUSKESMAS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="208" y="50" width="126" height="20"/>
+				<reportElement x="209" y="49" width="126" height="20"/>
 				<textElement>
 					<font fontName="Times New Roman" size="16"/>
 				</textElement>
 				<text><![CDATA[DATA PETUGAS]]></text>
 			</staticText>
+			<image>
+				<reportElement x="0" y="2" width="70" height="68"/>
+				<imageExpression><![CDATA["D:\\#Project 1 (Desktop)#\\Code\\sisteminformasipuskesmas\\src\\image\\logo-SIP_Menu.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="485" y="0" width="70" height="70"/>
+				<imageExpression><![CDATA["D:\\#Project 1 (Desktop)#\\Code\\sisteminformasipuskesmas\\src\\image\\logo_puskesmas.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -72,57 +72,57 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement style="Column header" x="0" y="19" width="79" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Column header" x="0" y="19" width="70" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<text><![CDATA[ID Petugas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="79" y="19" width="79" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="10"/>
-				</textElement>
-				<text><![CDATA[Nama Petugas]]></text>
-			</staticText>
-			<staticText>
-				<reportElement style="Column header" x="158" y="19" width="79" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Column header" x="149" y="19" width="79" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<text><![CDATA[Tempat Lahir]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="237" y="19" width="79" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Column header" x="228" y="19" width="88" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<text><![CDATA[Tanggal Lahir]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="316" y="19" width="69" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<text><![CDATA[Jenis Kelamin]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="385" y="19" width="98" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Column header" x="385" y="19" width="110" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<text><![CDATA[Alamat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="483" y="19" width="70" height="15" forecolor="#000000"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Column header" x="495" y="19" width="60" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<text><![CDATA[No HP]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="7" width="555" height="1"/>
+				<reportElement x="0" y="0" width="555" height="1"/>
 			</line>
+			<staticText>
+				<reportElement style="Column header" x="70" y="19" width="79" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Nama Petugas]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
@@ -134,58 +134,58 @@
 				</graphicElement>
 			</line>
 			<textField>
-				<reportElement style="Detail" x="0" y="0" width="79" height="15"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Detail" x="0" y="0" width="70" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{id_petugas}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="79" y="0" width="79" height="15"/>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nama_petugas}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement style="Detail" x="158" y="0" width="79" height="15"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Detail" x="149" y="0" width="79" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tempat_lahir}]]></textFieldExpression>
 			</textField>
-			<textField pattern="yyyy-MM-dd">
-				<reportElement style="Detail" x="237" y="0" width="79" height="15"/>
-				<textElement textAlignment="Center">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement style="Detail" x="228" y="0" width="88" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tanggal_lahir}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="316" y="0" width="69" height="15"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Detail" x="316" y="0" width="69" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jenis_kelamin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="385" y="0" width="98" height="15"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Detail" x="385" y="0" width="110" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{alamat}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="483" y="0" width="70" height="15"/>
-				<textElement textAlignment="Center">
+				<reportElement style="Detail" x="495" y="0" width="60" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
 					<font fontName="Times New Roman" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{no_hp}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement style="Detail" x="70" y="0" width="79" height="15" forecolor="#000000"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama_petugas}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="10" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
 				<graphicElement>
